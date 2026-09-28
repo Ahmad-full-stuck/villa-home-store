@@ -94,7 +94,7 @@ const normalizeProduct = (value: unknown, index: number): Product | null => {
   const name = textFrom(value.name, '')
   const slug = textFrom(value.slug, textFrom(value.id, `product-${index + 1}`))
   if (!name || !slug) return null
-  const image = textFrom(value.image, 'fabrics/hero.jpg')
+  const image = textFrom(value.image, 'products/samsung-crystal-55.webp')
   const imageList = Array.isArray(value.images) ? value.images.filter((item): item is string => typeof item === 'string' && item.length > 0) : []
   const stock = stockFrom(value.stockMeters ?? value.stockQuantity ?? value.inventory ?? value.stock, 10)
   const productAvailable = booleanFrom(value.inStock, stock > 0)
@@ -106,9 +106,9 @@ const normalizeProduct = (value: unknown, index: number): Product | null => {
     id: textFrom(value.id, slug),
     slug,
     name,
-    type: textFrom(value.type, 'قماش'),
-    categoryId: textFrom(value.categoryId ?? value.category, 'plain'),
-    description: textFrom(value.description, 'قماش مختار لتوسيع خيارات التفصيل والتصميم.'),
+    type: textFrom(value.type, 'جهاز منزلي'),
+    categoryId: textFrom(value.categoryId ?? value.category, 'tvs'),
+    description: textFrom(value.description, 'جهاز منزلي مختار بمواصفات واضحة وصور صادقة.'),
     price: Math.max(0, numberFrom(value.price, 0)),
     compareAtPrice: typeof value.compareAtPrice === 'number' ? value.compareAtPrice : undefined,
     image,
@@ -128,7 +128,7 @@ const normalizeCategory = (value: unknown, index: number): Category | null => {
   if (!isRecord(value)) return null
   const name = textFrom(value.name, '')
   const id = textFrom(value.id ?? value.slug, `category-${index + 1}`)
-  return name ? { id, slug: textFrom(value.slug, id), name, description: textFrom(value.description, 'تشكيلة من الأقمشة المختارة'), image: textFrom(value.image, 'fabrics/hero.jpg'), accent: textFrom(value.accent, '#a34163') } : null
+  return name ? { id, slug: textFrom(value.slug, id), name, description: textFrom(value.description, 'تشكيلة أجهزة مختارة لبيتك'), image: textFrom(value.image, 'products/samsung-crystal-55.webp'), accent: textFrom(value.accent, '#16233f') } : null
 }
 
 const normalizeRoute = (value: unknown, index: number): SiteRoute | null => {

@@ -98,7 +98,7 @@ function App() {
   const toggleWishlist = (slug: string) => {
     setWishlist((current) => {
       const exists = current.includes(slug)
-      setNotice(exists ? 'أزيل القماش من المفضلة' : 'حُفظ القماش في المفضلة')
+      setNotice(exists ? 'أزيل الجهاز من المفضلة' : 'حُفظ الجهاز في المفضلة')
       return exists ? current.filter((item) => item !== slug) : [...current, slug]
     })
   }

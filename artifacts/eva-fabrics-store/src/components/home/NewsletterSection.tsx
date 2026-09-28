@@ -11,8 +11,8 @@ export function NewsletterSection() {
 
   const subscribeUrl = siteConfig.whatsappUrl(
     email.trim()
-      ? `مرحباً إيفا ستور، أرغب بالاشتراك في النشرة عبر البريد: ${email.trim()}`
-      : 'مرحباً إيفا ستور، أرغب بالاشتراك في نشرة الأقمشة',
+      ? `مرحباً فيلا هوم، أرغب بالاشتراك في النشرة عبر البريد: ${email.trim()}`
+      : 'مرحباً فيلا هوم، أرغب بالاشتراك في نشرة العروض',
   )
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -30,9 +30,9 @@ export function NewsletterSection() {
     <section className="container-eva section-block" aria-label="النشرة البريدية">
       <div className="newsletter-card">
         <div>
-          <span className="eyebrow"><Mail size={14} />نشرة إيفا</span>
-          <h2>جديد الأقمشة يصل إلى بريدك أولاً</h2>
-          <p>خامة جديدة، لون متجدد، أو عرض لفترة محدودة، نرسله لك عند حدوثه فقط.</p>
+          <span className="eyebrow"><Mail size={14} />نشرة فيلا هوم</span>
+          <h2>جديد الأجهزة يصل إلى بريدك أولاً</h2>
+          <p>جهاز جديد، عرض لفترة محدودة، أو نصيحة صيانة، نرسله لك عند حدوثه فقط.</p>
         </div>
         <form className="newsletter-form" onSubmit={handleSubmit}>
           <label htmlFor="newsletter-email" className="sr-only">البريد الإلكتروني</label>
@@ -60,7 +60,7 @@ export function NewsletterSection() {
           {status === 'sent' && 'فتحنا لك واتساب لإتمام الاشتراك.'}
         </div>
         <p className="newsletter-note">
-          أو اطلبي استشارة في اختيار القماش عبر{' '}
+          أو اطلبي استشارة في اختيار الجهاز عبر{' '}
           <a href={siteConfig.whatsappUrl()} target="_blank" rel="noreferrer">
             واتساب <MessageCircle size={13} />
           </a>

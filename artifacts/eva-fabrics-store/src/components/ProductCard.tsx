@@ -133,7 +133,7 @@ export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps
               const node = event.currentTarget
               if (node.dataset.fallback === '1') return
               node.dataset.fallback = '1'
-              node.src = 'fabrics/hero.jpg'
+              node.src = 'products/samsung-crystal-55.webp'
             }}
           />
         </Link>
@@ -162,7 +162,7 @@ export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps
           <span className="product-price">{formatPrice(product.price)}</span>
         </div>
         <div className="product-card-footer">
-          <div className="swatch-list" role="list" aria-label="ألوان الخامة">
+          <div className="swatch-list" role="list" aria-label="ألوان المنتج">
             {product.colors.slice(0, 5).map((color) => (
               <span
                 key={color.id}
@@ -191,7 +191,7 @@ export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps
 
 export function ProductGridSkeleton() {
   return (
-    <div className="product-grid" role="status" aria-busy="true" aria-label="جارٍ تحميل الأقمشة">
+    <div className="product-grid" role="status" aria-busy="true" aria-label="جارٍ تحميل المنتجات">
       {Array.from({ length: 8 }, (_, index) => (
         <div key={index} className="product-skeleton skeleton-shimmer" aria-hidden="true"><div /><span /><span /></div>
       ))}

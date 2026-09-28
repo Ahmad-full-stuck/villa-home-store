@@ -9,22 +9,22 @@ interface FavoritesPageProps {
   categories: Category[]
   wishlist: string[]
   onWish: (slug: string) => void
-  onAdd: (product: Product, color: ProductColor, length: number) => void
+  onAdd: (product: Product, color: ProductColor, quantity: number) => void
 }
 
 const favoriteCountLabel = (count: number): string => {
-  if (count === 1) return 'خامة واحدة بانتظارك'
-  if (count === 2) return 'خامتان بانتظارك'
-  if (count <= 10) return `${count} خامات بانتظارك`
-  return `${count} خامة بانتظارك`
+  if (count === 1) return 'جهاز واحد بانتظارك'
+  if (count === 2) return 'جهازان بانتظارك'
+  if (count <= 10) return `${count} أجهزة بانتظارك`
+  return `${count} جهازاً بانتظارك`
 }
 
 const fallbackSuggestions = [
-  { id: 'embroidered', label: 'مطرز' },
-  { id: 'plain', label: 'سادة' },
-  { id: 'stretch', label: 'مطاطي' },
-  { id: 'sequined', label: 'ترتر' },
-  { id: 'patterned', label: 'مزخرف' },
+  { id: 'tvs', label: 'التلفزيونات' },
+  { id: 'ac', label: 'المكيفات' },
+  { id: 'wash', label: 'الغسالات' },
+  { id: 'fridge', label: 'الثلاجات' },
+  { id: 'kitchen', label: 'أجهزة المطبخ' },
 ]
 
 export function FavoritesPage({ products, categories, wishlist, onWish, onAdd }: FavoritesPageProps) {
@@ -41,11 +41,11 @@ export function FavoritesPage({ products, categories, wishlist, onWish, onAdd }:
           <div className="breadcrumbs"><Link href="/">الرئيسية</Link><span>›</span><span>المفضلة</span></div>
           <section className="glass empty-glass" role="status">
             <div className="empty-icon"><Heart size={25} /></div>
-            <h1>لم تحفظي أقمشة بعد</h1>
-            <p>اضغطي على القلب في أي خامة لتظهر هنا، ثم انقليها إلى السلة بنصف متر أو أكثر بضغطة واحدة.</p>
+            <h1>لم تحفظي أجهزة بعد</h1>
+            <p>اضغطي على القلب في أي جهاز لتظهر هنا، ثم أضيفيه إلى السلة بضغطة واحدة.</p>
             <div className="empty-actions">
-              <Link href="/catalog" className="button button-primary">اكتشفي الأقمشة <ArrowLeft size={16} /></Link>
-              <Link href="/fabric-guide" className="button button-outline">دليل اختيار القماش <ArrowLeft size={16} /></Link>
+              <Link href="/catalog" className="button button-primary">اكتشفي المنتجات <ArrowLeft size={16} /></Link>
+              <Link href="/fabric-guide" className="button button-outline">دليل اختيار الجهاز <ArrowLeft size={16} /></Link>
             </div>
             <div className="local-orders">
               <span>أقسام مقترحة:</span>
@@ -81,13 +81,13 @@ export function FavoritesPage({ products, categories, wishlist, onWish, onAdd }:
                 <button type="button" className="chip" onClick={() => onWish(product.slug)} aria-label={`إزالة ${product.name} من المفضلة`}>
                   <Heart size={13} />إزالة
                 </button>
-                <Link href={`/product/${product.slug}`} className="underlined-link">تفاصيل الخامة <ArrowLeft size={14} /></Link>
+                <Link href={`/product/${product.slug}`} className="underlined-link">تفاصيل المنتج <ArrowLeft size={14} /></Link>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="favorites-note"><ShoppingBag size={18} /><span>اضغطي «أضيفي ٠٫٥ م» على أي بطاقة لنقلها إلى السلة مباشرة، أو القلب لإزالتها من هنا.</span></div>
+        <div className="favorites-note"><ShoppingBag size={18} /><span>اضغطي «أضيفي للسلة» على أي بطاقة لإضافتها مباشرة، أو القلب لإزالتها من هنا.</span></div>
       </main>
     </>
   )

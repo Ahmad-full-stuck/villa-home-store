@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from 'react'
-import { Heart, Home, Instagram, Menu, MessageCircle, Search, ShoppingBag, Shirt, X } from 'lucide-react'
+import { Heart, Home, Instagram, Menu, MessageCircle, Search, ShoppingBag, Store, X } from 'lucide-react'
 import { Link, useLocation } from 'wouter'
 import type { Product, SiteRoute } from '@/types'
 import { formatQuantity } from '@/lib/catalog'
@@ -23,9 +23,9 @@ interface NavItem {
 
 const primaryNav: NavItem[] = [
   { id: 'home', label: 'الرئيسية', path: '/' },
-  { id: 'catalog', label: 'الأقمشة', path: '/catalog' },
+  { id: 'catalog', label: 'المنتجات', path: '/catalog' },
   { id: 'favorites', label: 'المفضلة', path: '/favorites' },
-  { id: 'guide', label: 'دليل الأقمشة', path: '/fabric-guide' },
+  { id: 'guide', label: 'دليل الأجهزة', path: '/fabric-guide' },
   { id: 'about', label: 'من نحن', path: '/about' },
   { id: 'contact', label: 'تواصلي', path: '/contact' },
 ]
@@ -65,7 +65,7 @@ export function SiteHeader({ routes, products, cartCount, wishlistCount }: SiteH
 
   const bottomItems = [
     { id: 'home', label: 'الرئيسية', path: '/', Icon: Home, badge: '' },
-    { id: 'catalog', label: 'الأقمشة', path: '/catalog', Icon: Shirt, badge: '' },
+    { id: 'catalog', label: 'المنتجات', path: '/catalog', Icon: Store, badge: '' },
     { id: 'favorites', label: 'المفضلة', path: '/favorites', Icon: Heart, badge: wishlistCount > 0 ? `${wishlistCount}` : '' },
     { id: 'cart', label: 'السلة', path: '/cart', Icon: ShoppingBag, badge: cartCount > 0 ? String(cartCount) : '' },
   ]
@@ -95,7 +95,7 @@ export function SiteHeader({ routes, products, cartCount, wishlistCount }: SiteH
             })}
           </nav>
           <div className="header-actions">
-            <button type="button" className="icon-button" onClick={() => setSearchOpen(true)} aria-label="فتح البحث في الأقمشة" aria-haspopup="dialog" aria-expanded={searchOpen}>
+            <button type="button" className="icon-button" onClick={() => setSearchOpen(true)} aria-label="فتح البحث في المنتجات" aria-haspopup="dialog" aria-expanded={searchOpen}>
               <Search size={19} />
             </button>
             <Link href="/favorites" className="icon-button favorite-header" onClick={navigate} aria-label={`المفضلة، ${wishlistCount} عناصر`}>
@@ -139,7 +139,7 @@ export function SiteHeader({ routes, products, cartCount, wishlistCount }: SiteH
           </a>
           <a className="chip" href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
             <Instagram size={17} />
-            حساب إيفا على إنستغرام
+            حساب فيلا هوم على إنستغرام
           </a>
         </div>
       </Modal>

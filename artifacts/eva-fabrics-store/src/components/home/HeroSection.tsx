@@ -4,10 +4,10 @@ import { Link } from 'wouter'
 import { SmartImage } from '@/components/ui/SmartImage'
 
 const slides = [
-  { src: 'fabrics/hero.jpg', alt: 'نماذج من أقمشة إيفا ستور' },
-  { src: 'fabrics/rose.jpg', alt: 'قماش مطرز بلون وردي من تشكيلة إيفا' },
-  { src: 'fabrics/blue.jpg', alt: 'قماش أزرق ناعم من تشكيلة إيفا' },
-  { src: 'fabrics/emerald.jpg', alt: 'قماش أخضر مرن من تشكيلة إيفا' },
+  { src: 'products/tv-gallery-1.webp', alt: 'ركن معيشة بشاشة تلفزيون عريضة' },
+  { src: 'products/kitchen-gallery-1.webp', alt: 'مطبخ منظم بأجهزة منزلية حديثة' },
+  { src: 'products/ac-gallery-2.webp', alt: 'مكيف جداري داخل غرفة مرتبة' },
+  { src: 'products/wash-gallery-1.webp', alt: 'غسالة أوتوماتيك في غرفة غسيل' },
 ]
 
 export function HeroSection() {
@@ -45,11 +45,11 @@ export function HeroSection() {
     <>
       <section className="home-hero glass-hero container-eva">
         <div className="hero-copy">
-          <span className="eyebrow"><Sparkles size={14} />معرض أقمشة عربي</span>
-          <h1>اختاري <span>القماش المثالي</span><br />لكل إبداع</h1>
-          <p>تشكيلة منتقاة من الأقمشة الفاخرة والمريحة، مع شرح واضح للخامة قبل أن تضيفيها إلى مشروعك.</p>
+          <span className="eyebrow"><Sparkles size={14} />أجهزة منزلية مختارة</span>
+          <h1>اختاري <span>جهازك المناسب</span><br />لبيتك</h1>
+          <p>تشكيلة منتقاة من الأجهزة المنزلية مع مواصفات واضحة وصور صادقة، لتأخذ قرارك قبل أن تطلب.</p>
           <div className="hero-actions">
-            <Link href="/catalog" className="button button-primary">تصفحي الأقمشة <ArrowLeft size={16} /></Link>
+            <Link href="/catalog" className="button button-primary">تصفحي المنتجات <ArrowLeft size={16} /></Link>
             <Link href="/catalog?sort=newest" className="button button-outline">اكتشفي الجديد <ArrowRight size={16} /></Link>
           </div>
           <div className="hero-note"><span className="note-dot" />توصيل إلى جميع محافظات العراق <span className="note-divider" /><span className="note-alt">دفع عند استلام الطلب</span></div>
@@ -72,7 +72,7 @@ export function HeroSection() {
               {slides.map((slide, index) => <button key={slide.src} type="button" role="tab" aria-selected={index === activeSlide} aria-label={slide.alt} className={index === activeSlide ? 'is-active' : ''} onClick={() => { setActiveSlide(index); restart() }} />)}
             </div>
           </>}
-          <div className="hero-vertical-label" aria-hidden="true">EVA · FABRICS</div>
+          <div className="hero-vertical-label" aria-hidden="true">VILLA · HOME</div>
         </div>
       </section>
     </>

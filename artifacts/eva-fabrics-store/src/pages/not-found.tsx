@@ -30,13 +30,13 @@ export default function NotFound() {
           <span className="not-found-code" aria-hidden="true">404</span>
           <span className="eyebrow"><Search size={14} />الصفحة غير موجودة</span>
           <h1>هذا الرابط لم يعد متاحاً</h1>
-          <p>ربما تغيّر العنوان أو حُذفت الصفحة. لا بأس: يمكنك العودة إلى الرئيسية أو متابعة تصفّح الأقمشة واختيار خامة جديدة.</p>
+          <p>ربما تغيّر العنوان أو حُذفت الصفحة. لا بأس: يمكنك العودة إلى الرئيسية أو متابعة تصفّح المنتجات واختيار جهاز جديد.</p>
           <div className="not-found-actions">
             <Link href="/" className="button button-primary">العودة إلى الرئيسية <ArrowLeft size={16} /></Link>
-            <Link href="/catalog" className="button button-outline">تصفحي الأقمشة <ArrowLeft size={16} /></Link>
+            <Link href="/catalog" className="button button-outline">تصفحي المنتجات <ArrowLeft size={16} /></Link>
           </div>
           <div className="not-found-links">
-            <Link href="/fabric-guide" className="chip">دليل الأقمشة</Link>
+            <Link href="/fabric-guide" className="chip">دليل الأجهزة</Link>
             <Link href="/about" className="chip">من نحن</Link>
             <Link href="/contact" className="chip">تواصلي معنا</Link>
             <Link href="/order-tracking" className="chip">تتبّع الطلب</Link>

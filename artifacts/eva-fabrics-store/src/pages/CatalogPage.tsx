@@ -25,7 +25,7 @@ const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: 'price-desc', label: 'السعر: الأعلى أولاً' },
 ]
 
-const STOP_WORDS = new Set(['قماش', 'القماش', 'اقمشه', 'الاقمشه', 'fabric'])
+const STOP_WORDS = new Set(['جهاز', 'الجهاز', 'اجهزه', 'الاجهزه', 'appliance'])
 
 const catalogStyles = `
 .chip-row {
@@ -87,7 +87,7 @@ const injectStyles = (id: string, css: string) => {
   document.head.appendChild(node)
 }
 
-injectStyles('eva-catalog-styles', catalogStyles)
+injectStyles('villa-catalog-styles', catalogStyles)
 
 const toWesternDigits = (value: string): string => value
   .replace(/[\u0660-\u0669]/g, (digit) => String(digit.charCodeAt(0) - 0x0660))
@@ -229,7 +229,7 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
   const statusLabel = status === 'loading' ? 'جارٍ الاتصال بالخادم' : status === 'fallback' ? 'نسخة محلية جاهزة' : 'تحديث مباشر عند توفر API'
 
   const chips = useMemo(() => [
-    { id: '', label: 'كل الخامات', count: products.length },
+    { id: '', label: 'كل المنتجات', count: products.length },
     ...categories.map((category) => ({
       id: category.id,
       label: category.name,
@@ -282,15 +282,15 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
       <div className="breadcrumbs">
         <Link href="/">الرئيسية</Link>
         <span>›</span>
-        <span>الأقمشة</span>
+        <span>المنتجات</span>
         {activeCategory && <><span>›</span><span>{activeCategory.name}</span></>}
       </div>
 
       <div className="catalog-heading">
         <div>
-          <span className="eyebrow">معرض الخامات</span>
-          <h1>{activeCategory ? activeCategory.name : 'كل الأقمشة'}</h1>
-          <p>{products.length} خامة في المعرض · {statusLabel}</p>
+          <span className="eyebrow">متجر الأجهزة</span>
+          <h1>{activeCategory ? activeCategory.name : 'كل المنتجات'}</h1>
+          <p>{products.length} منتج في المتجر · {statusLabel}</p>
         </div>
         <div className="catalog-sort">
           <label htmlFor="catalog-sort">ترتيب حسب</label>
@@ -304,7 +304,7 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
         </div>
       </div>
 
-      <div className="chip-row" role="group" aria-label="تصفحي الأقمشة حسب القسم">
+      <div className="chip-row" role="group" aria-label="تصفحي المنتجات حسب القسم">
         {chips.map((chip) => {
           const active = chip.id ? chip.id === activeCategoryId : !categoryId
           return (
@@ -313,7 +313,7 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
               type="button"
               className={`chip ${active ? 'chip-active' : ''}`}
               aria-pressed={active}
-              aria-label={`${chip.label}، ${chip.count} خامة`}
+              aria-label={`${chip.label}، ${chip.count} منتج`}
               onClick={() => updateParams({ category: chip.id || null })}
             >
               <span>{chip.label}</span>
@@ -341,8 +341,8 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
       </div>
 
       <div className="catalog-layout">
-        <aside className="filter-sidebar" aria-label="تصفية الأقمشة">{sidePanel}</aside>
-        <section className="catalog-results" aria-label="نتائج الأقمشة">
+        <aside className="filter-sidebar" aria-label="تصفية المنتجات">{sidePanel}</aside>
+        <section className="catalog-results" aria-label="نتائج المنتجات">
           <form className="catalog-search" onSubmit={submitSearch} role="search">
             <Search size={18} aria-hidden="true" />
             <label className="sr-only" htmlFor="catalog-search">ابحثي في النتائج</label>
@@ -351,7 +351,7 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
               type="search"
               value={searchInput}
               onChange={(event) => setSearchInput(event.target.value)}
-              placeholder="ابحثي باسم القماش أو اللون أو الاستخدام"
+              placeholder="ابحثي باسم الجهاز أو الماركة أو الفئة"
               autoComplete="off"
             />
             {searchInput && (
@@ -384,7 +384,7 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
           )}
 
           <div className="stats-bar glass-card" role="status">
-            <span className="stat-item"><Layers size={14} aria-hidden="true" />عرض <strong>{shown.length}</strong> من {products.length} خامة</span>
+            <span className="stat-item"><Layers size={14} aria-hidden="true" />عرض <strong>{shown.length}</strong> من {products.length} منتج</span>
             <span className="stat-divider" aria-hidden="true" />
             <span className="stat-item"><Tag size={14} aria-hidden="true" />متوسط السعر <strong>{shown.length ? formatPrice(averagePrice) : '—'}</strong></span>
             <span className="stat-divider" aria-hidden="true" />
@@ -411,7 +411,7 @@ export function CatalogPage({ products, categories, status, wishlist, onWish, on
         </section>
       </div>
 
-      <Modal open={filterOpen} onClose={() => setFilterOpen(false)} title="تصفية الأقمشة" variant="bottom" className="filter-drawer">
+      <Modal open={filterOpen} onClose={() => setFilterOpen(false)} title="تصفية المنتجات" variant="bottom" className="filter-drawer">
         <div className="drawer-header">
           <h2>تصفية النتائج</h2>
           <button type="button" className="icon-button" onClick={() => setFilterOpen(false)} aria-label="إغلاق التصفية">
@@ -464,7 +464,7 @@ function FilterPanel({
       </div>
 
       <fieldset>
-        <legend>نوع القماش</legend>
+        <legend>فئة الجهاز</legend>
         <label className="filter-option">
           <input type="radio" name={`category-${scope}`} checked={!categoryId} onChange={() => onChange({ category: null })} />
           <span>كل الأقسام</span>
@@ -517,7 +517,7 @@ function FilterPanel({
       </label>
 
       <button type="button" className="filter-browse" onClick={onClear} disabled={!hasFilters}>
-        عرض كل الخامات <ArrowLeft size={14} aria-hidden="true" />
+        عرض كل المنتجات <ArrowLeft size={14} aria-hidden="true" />
       </button>
     </div>
   )
@@ -538,9 +538,9 @@ function EmptyResults({ onClear }: { onClear: () => void }) {
   return (
     <div className="empty-state glass-card" role="status">
       <div className="empty-icon"><Search size={23} aria-hidden="true" /></div>
-      <h2>لم نجد خامة بهذه المواصفات</h2>
-      <p>جرّبي كلمة بحث مختلفة أو أزيلي بعض الفلاتر لتظهر لك كل الخامات المتاحة في المعرض.</p>
-      <button type="button" className="button button-primary" onClick={onClear}>عرض كل الأقمشة</button>
+      <h2>لم نجد جهازاً بهذه المواصفات</h2>
+      <p>جرّبي كلمة بحث مختلفة أو أزيلي بعض الفلاتر لتظهر لك كل المنتجات المتاحة في المتجر.</p>
+      <button type="button" className="button button-primary" onClick={onClear}>عرض كل المنتجات</button>
     </div>
   )
 }

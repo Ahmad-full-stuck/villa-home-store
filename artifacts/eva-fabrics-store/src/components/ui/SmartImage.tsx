@@ -52,7 +52,22 @@ export function SmartImage({
   }
 
   if (!isLocalFabric(src)) {
-    return <img src={src} alt={alt} decoding="async" loading={priority ? 'eager' : 'lazy'} className={className} style={style} width={intrinsicWidth} height={intrinsicHeight} {...rest} />
+    return (
+      <img
+        src={src}
+        alt={alt}
+        sizes={sizes}
+        onError={onError}
+        decoding="async"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        className={className}
+        style={style}
+        width={intrinsicWidth}
+        height={intrinsicHeight}
+        {...rest}
+      />
+    )
   }
 
   const dir = src.slice(0, src.lastIndexOf('/') + 1)

@@ -5,14 +5,14 @@ import { SectionHeading } from './SectionHeading'
 const orderSteps = [
   {
     index: '٠١',
-    title: 'اختاري القماش',
-    text: 'تصفحي الأقسام وقارني الصور والمواصفات: السماكة والمرونة والشفافية قبل أن تقرري.',
+    title: 'اختاري الجهاز',
+    text: 'تصفحي الأقسام وقارني الصور والمواصفات: السعة والطاقة والضمان قبل أن تقرري.',
     hint: 'بدون تسجيل',
   },
   {
     index: '٠٢',
     title: 'حددي اللون والكمية',
-    text: 'أضيفي نصف متر فأكثر إلى السلة، والكمية المتاحة مكتوبة أمام كل لون من الألوان.',
+    text: 'أضيفي الجهاز إلى السلة، والكمية المتاحة مكتوبة أمام كل لون من الألوان.',
     hint: 'مخزون واضح',
   },
   {
@@ -26,7 +26,7 @@ const orderSteps = [
 export function StepsSection() {
   return (
     <section className="container-eva section-soft" aria-label="كيف تطلب؟" style={{ marginBlock: 'clamp(16px, 3vw, 32px)' }}>
-      <SectionHeading eyebrow="ثلاث خطوات فقط" title="كيف تطلب؟" description="من اختيار القماش إلى باب المنزل" linkLabel="ابدئي التسوق" linkHref="/catalog" />
+      <SectionHeading eyebrow="ثلاث خطوات فقط" title="كيف تطلب؟" description="من اختيار الجهاز إلى باب المنزل" linkLabel="ابدئي التسوق" linkHref="/catalog" />
       <div className="steps-grid">
         {orderSteps.map((step) => (
           <article className="step-card glass-card" key={step.index}>
@@ -40,7 +40,7 @@ export function StepsSection() {
         ))}
       </div>
       <div className="center-action">
-        <Link href="/catalog" className="button button-primary">تصفحي كل الأقمشة <ArrowLeft size={16} /></Link>
+        <Link href="/catalog" className="button button-primary">تصفحي كل المنتجات <ArrowLeft size={16} /></Link>
       </div>
     </section>
   )

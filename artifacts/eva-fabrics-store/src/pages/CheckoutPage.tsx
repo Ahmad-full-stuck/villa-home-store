@@ -21,7 +21,7 @@ type OrderChannel = 'api' | 'whatsapp'
 interface StoredOrderItem {
   productName: string
   colorName: string
-  meters: number
+  quantity: number
   unitPrice: number
   total: number
 }
@@ -40,8 +40,8 @@ interface StoredOrder {
   address: string
 }
 
-const ORDERS_KEY = 'eva-orders'
-const PROFILE_KEY = 'eva-customer'
+const ORDERS_KEY = 'villa-home-orders'
+const PROFILE_KEY = 'villa-home-customer'
 
 const fieldOrder: (keyof CheckoutForm)[] = ['name', 'phone', 'governorate', 'district', 'address', 'landmark', 'email', 'notes']
 
@@ -53,7 +53,7 @@ const createLocalOrderNumber = (): string => {
   const now = new Date()
   const stamp = `${String(now.getFullYear()).slice(-2)}${padNumber(now.getMonth() + 1)}${padNumber(now.getDate())}`
   const suffix = Math.floor(1000 + Math.random() * 9000)
-  return `EVA-${stamp}-${suffix}`
+  return `VH-${stamp}-${suffix}`
 }
 
 const glassStyles = `
@@ -210,8 +210,8 @@ export function CheckoutPage({ cart, onComplete }: CheckoutPageProps) {
         <div className="glass glass-card empty-card">
           <div className="empty-icon"><Check size={25} /></div>
           <h1>لا توجد عناصر لإتمام الطلب</h1>
-          <p>أضيفي قماشاً إلى السلة أولاً، ثم املئي مربع الطلب بخطوة واحدة.</p>
-          <Link href="/catalog" className="button button-primary">العودة إلى الأقمشة <ArrowLeft size={16} /></Link>
+          <p>أضيفي جهازاً إلى السلة أولاً، ثم املئي مربع الطلب بخطوة واحدة.</p>
+          <Link href="/catalog" className="button button-primary">العودة إلى المنتجات <ArrowLeft size={16} /></Link>
         </div>
       </main>
     )
@@ -322,7 +322,7 @@ export function CheckoutPage({ cart, onComplete }: CheckoutPageProps) {
       const record: StoredOrder = {
         orderNumber,
         createdAt: new Date().toISOString(),
-        items: payload.items.map((item) => ({ productName: item.productName, colorName: item.colorName, meters: item.quantity, unitPrice: item.unitPrice, total: item.totalPrice })),
+        items: payload.items.map((item) => ({ productName: item.productName, colorName: item.colorName, quantity: item.quantity, unitPrice: item.unitPrice, total: item.totalPrice })),
         subtotal: payload.subtotal,
         deliveryFee: payload.deliveryFee,
         total: payload.total,

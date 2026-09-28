@@ -12,7 +12,7 @@ interface SearchDialogProps {
   products: Product[]
 }
 
-const suggestions = ['قماش مطاطي', 'قماش أسود', 'مطرز', 'ترتر', 'فساتين سهرة', 'غير مطاطي']
+const suggestions = ['تلفزيون سامسونج', 'مكيف', 'غسالة', 'ثلاجة', 'شاشة عريضة', 'إل جي']
 
 export function SearchDialog({ open, onClose, products }: SearchDialogProps) {
   const [query, setQuery] = useState('')
@@ -29,12 +29,12 @@ export function SearchDialog({ open, onClose, products }: SearchDialogProps) {
   }
 
   return (
-    <Modal open={open} onClose={onClose} title="البحث في الأقمشة" variant="top" className="search-panel">
+    <Modal open={open} onClose={onClose} title="البحث في المنتجات" variant="top" className="search-panel">
       <div className="search-panel-inner">
         <form className="search-form" onSubmit={submit} role="search">
           <Search size={20} aria-hidden="true" />
-          <label className="sr-only" htmlFor="global-search">ابحثي عن قماش أو لون أو استخدام</label>
-          <input id="global-search" autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="ابحثي عن قماش، لون أو استخدام" autoComplete="off" />
+          <label className="sr-only" htmlFor="global-search">ابحثي عن جهاز أو ماركة أو فئة</label>
+          <input id="global-search" autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="ابحثي عن جهاز، ماركة أو فئة" autoComplete="off" />
           {query && <button type="button" className="clear-search" onClick={() => setQuery('')} aria-label="مسح البحث"><X size={16} /></button>}
           <button type="submit" className="button button-primary button-small">بحث</button>
         </form>

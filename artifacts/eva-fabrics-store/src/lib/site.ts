@@ -20,13 +20,13 @@ const localPhone = (() => {
 const safeInstagram = /^https?:\/\//i.test(rawInstagram) ? rawInstagram : `https://${rawInstagram.replace(/^\/+/, '')}`
 
 export const siteConfig = {
-  name: 'إيفا ستور للأقمشة',
-  shortName: 'إيفا ستور',
+  name: 'فيلا هوم للأجهزة المنزلية',
+  shortName: 'فيلا هوم',
   phone: localPhone,
   whatsappNumber: internationalWhatsApp,
   instagramUrl: safeInstagram,
-  whatsappUrl: (message = 'مرحباً إيفا ستور، أحتاج مساعدة في اختيار الأقمشة'): string => `https://wa.me/${internationalWhatsApp}?text=${encodeURIComponent(message)}`,
-  instagramText: 'إيفا ستور على إنستغرام',
+  whatsappUrl: (message = 'مرحباً فيلا هوم، أحتاج مساعدة في اختيار الجهاز'): string => `https://wa.me/${internationalWhatsApp}?text=${encodeURIComponent(message)}`,
+  instagramText: 'فيلا هوم على إنستغرام',
 }
 
 export const apiUrl = (path: string): string => `${apiBase}${path.startsWith('/') ? path : `/${path}`}`

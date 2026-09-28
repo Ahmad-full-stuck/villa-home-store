@@ -304,31 +304,31 @@ interface AboutStat {
 }
 
 const aboutStats: AboutStat[] = [
-  { label: 'خامة في المعرض', value: 139, note: 'تشكيلة تتجدد مع كل موسم' },
-  { label: 'أقسام للتصنيف', value: 5, note: 'مطرز، سادة، مطاطي، ترتر، مزخرف' },
+  { label: 'جهاز في المتجر', value: 18, note: 'تشكيلة تتجدد باستمرار' },
+  { label: 'أقسام للتصنيف', value: 6, note: 'تلفزيونات، تكييفات، غسالات، ثلاجات، مطبخ، مراوح' },
   { label: 'محافظة نغطيها', value: 18, note: 'توصيل إلى كل العراق' },
   { label: 'طلب مكتمل', value: 2400, note: 'منذ انطلاق المتجر' },
 ]
 
 const aboutValues = [
-  { title: 'وضوح قبل الشراء', text: 'نكتب الشفافية والمرونة والوزن كما هي، بلا مبالغة ولا وعود مبهمة.', icon: <BadgeCheck size={18} /> },
-  { title: 'جودة تُلمَس', text: 'نراجع النسيج والتشطيب والثبات قبل أن تدخل الخامة إلى المعرض.', icon: <ShieldCheck size={18} /> },
-  { title: 'قرب من العميل', text: 'نسأل عن قصتك قبل أن نقترح الخامة، ونبقى معك حتى الاستلام.', icon: <MessageCircle size={18} /> },
-  { title: 'ابدئي من نصف متر', text: 'لا نفرض كميات كبيرة؛ اطلبي ما تحتاجينه فعلاً وزيدي لاحقاً.', icon: <Ruler size={18} /> },
+  { title: 'وضوح قبل الشراء', text: 'نكتب المواصفات والسعة والاستهلاك والضمان كما هي، بلا مبالغة ولا وعود مبهمة.', icon: <BadgeCheck size={18} /> },
+  { title: 'جودة تُفحص', text: 'نراجع الجهاز والتشطيب والتغليف قبل أن يدخل إلى المتجر.', icon: <ShieldCheck size={18} /> },
+  { title: 'قرب من العميل', text: 'نسأل عن احتياجك ومساحتك قبل أن نقترح الجهاز، ونبقى معك حتى الاستلام.', icon: <MessageCircle size={18} /> },
+  { title: 'قطعة واحدة تكفي', text: 'لا نفرض حدّاً أدنى للكمية؛ اطلب ما تحتاجينه فعلاً وزيدي لاحقاً.', icon: <Ruler size={18} /> },
 ]
 
 const aboutTimeline = [
-  { year: '٢٠١٩', title: 'بداية من زاوية صغيرة', text: 'عرضنا خامتين يوميتين وشرحنا الفرق بينهما بالصور واللمس، فبدأ الطلب يتوافد.' },
-  { year: '٢٠٢١', title: 'قسم للمطرز والمناسبات', text: 'أضفنا التافتا والكريب المطرز مع شرح التطريز والعناية به بعد الحلاقة.' },
-  { year: '٢٠٢٣', title: 'ولدت فكرة الدليل', text: 'نشرنا دليل الأقمشة ليجيب عن الأسئلة التي تصلنا يومياً قبل الطلب.' },
-  { year: '٢٠٢٥', title: 'المتجر يبدأ أونلاين', text: 'أصبح بإمكانك تصفّح المواصفات كاملة وطلب نصف متر من أي محافظة.' },
+  { year: '٢٠١٩', title: 'بداية من محل صغير', text: 'عرضنا جهازين اثنين وشرحنا الفرق بينهما بالمواصفات والصور، فبدأ الطلب يتوافد.' },
+  { year: '٢٠٢١', title: 'قسم للتكييفات والغسالات', text: 'أضفنا المكيفات والغسالات مع شرح السعة والاستهلاك والضمان قبل الشراء.' },
+  { year: '٢٠٢٣', title: 'ولدت فكرة الدليل', text: 'نشرنا دليل الأجهزة ليجيب عن الأسئلة التي تصلنا يومياً قبل الطلب.' },
+  { year: '٢٠٢٥', title: 'المتجر يبدأ أونلاين', text: 'أصبح بإمكانك تصفّح المواصفات كاملة وطلب جهاز من أي محافظة.' },
   { year: '٢٠٢٦', title: 'توصيل لكل العراق', text: 'شبكة شحن تغطي المحافظات مع متابعة الطلب عبر واتساب ورقم الطلب.' },
 ]
 
 const testimonials = [
-  { name: 'سارة م.', city: 'بغداد', text: 'وصف الشفافية والمرونة كان أميضاً من الصور؛ وصل القماش مطابقاً لما توقعته.' },
-  { name: 'نور الهدى ك.', city: 'البصرة', text: 'طلبت نصف متر فقط لتجربة اللون، ثم أكملت الطلب بعد التأكد من الدرجة.' },
-  { name: 'رنا ع.', city: 'أربيل', text: 'الرد عبر واتساب كان سريعاً، وساعدوني في حساب كمية العباءة قبل الشراء.' },
+  { name: 'سارة م.', city: 'بغداد', text: 'وصف المواصفات كان أميضاً من الصور؛ وصل الجهاز مطابقاً لما توقعته.' },
+  { name: 'نور الهدى ك.', city: 'البصرة', text: 'طلبت جهازاً واحداً للتجربة، ثم أكملت الطلب بعد التأكد من السعة.' },
+  { name: 'رنا ع.', city: 'أربيل', text: 'الرد عبر واتساب كان سريعاً، وساعدوني في اختيار المكيف المناسب لمساحة غرفتي.' },
 ]
 
 export function AboutPage() {
@@ -340,24 +340,24 @@ export function AboutPage() {
 
         <section className="about-hero">
           <div className="about-copy">
-            <span className="eyebrow"><Sparkles size={14} />من إيفا إلى يدك</span>
-            <h1>قصة إيفا تبدأ بسؤال واحد: ماذا ستصنعين؟</h1>
-            <p>بدأت إيفا ستور بفكرة بسيطة: أن يرى الزبون الخامة كما تراها الخياطة، بشرح واضح للّمس والامتداد واللون قبل أن تدفع ديناراً واحداً. اليوم نعرض تشكيلة متنوعة مع مواصفات مكتوبة وطلب يبدأ من نصف متر.</p>
+            <span className="eyebrow"><Sparkles size={14} />من المخزن إلى بيتك</span>
+            <h1>قصة فيلا هوم تبدأ بسؤال واحد: ماذا يحتاج بيتك؟</h1>
+            <p>بدأت فيلا هوم بفكرة بسيطة: أن يرى الزبون الجهاز كما يراه الفني، بشرح واضح للمواصفات والسعة والاستهلاك والضمان قبل أن تدفع ديناراً واحداً. اليوم نعرض تشكيلة متنوعة مع مواصفات مكتوبة وتوصيل إلى جميع المحافظات.</p>
             <div className="chip-row" style={{ marginTop: '22px' }}>
-              <span className="chip"><Ruler size={13} />طلب من نصف متر</span>
+              <span className="chip"><Ruler size={13} />قطعة واحدة تكفي</span>
               <span className="chip"><ShieldCheck size={13} />مواصفات مكتوبة</span>
               <span className="chip"><Truck size={13} />توصيل لكل العراق</span>
             </div>
             <div className="about-points">
-              <div><span>٠١</span><strong>وضوح قبل الطلب</strong><p>مواصفات وخطوات طلب بنصف متر.</p></div>
+              <div><span>٠١</span><strong>وضوح قبل الطلب</strong><p>مواصفات وخطوات طلب واضحة.</p></div>
               <div><span>٠٢</span><strong>اختيار أهدأ</strong><p>صور وتفاصيل تساعدك على المقارنة.</p></div>
               <div><span>٠٣</span><strong>دعم قريب</strong><p>تواصلي معنا قبل وبعد الطلب.</p></div>
             </div>
           </div>
           <div className="about-collage">
-            <SmartImage src="fabrics/rose.jpg" alt="قماش مطرز من معرض إيفا" sizes="(max-width: 820px) 46vw, 24vw" />
-            <SmartImage src="fabrics/blue.jpg" alt="قماش أزرق ناعم" sizes="(max-width: 820px) 46vw, 24vw" />
-            <span>EVA<br /><strong>FABRICS</strong></span>
+            <SmartImage src="products/tv-gallery-2.webp" alt="شاشة تلفزيون عريضة في غرفة معيشة" sizes="(max-width: 820px) 46vw, 24vw" />
+            <SmartImage src="products/ac-gallery-1.webp" alt="مكيف جداري حديث" sizes="(max-width: 820px) 46vw, 24vw" />
+            <span>VILLA<br /><strong>HOME</strong></span>
           </div>
         </section>
 
@@ -367,10 +367,10 @@ export function AboutPage() {
               <span className="eyebrow">قصة البراند</span>
               <h2 id="about-story-title">من زاوية صغيرة إلى عادة يعتمد عليها.</h2>
             </div>
-            <Link href="/fabric-guide" className="underlined-link">اقرئي دليل الأقمشة <ArrowLeft size={15} /></Link>
+            <Link href="/fabric-guide" className="underlined-link">اقرئي دليل الأجهزة <ArrowLeft size={15} /></Link>
           </div>
           <div className="story-copy-grid">
-            <p>في البداية كان العرض محدوداً: قماشان يوميان وسؤال يتكرر من كل زائرة عن الفرق بينهما. أدركنا أن الشرح الواضح أهم من الأرقام، فكتبتنا تفاصيل كل خامة كما تُختبر في الواقع: الوزن، العرض، الشفافية، المرونة، وطريقة العناية.</p>
+            <p>في البداية كان العرض محدوداً: جهازان اثنان وسؤال يتكرر من كل زائر عن الفرق بينهما. أدركنا أن الشرح الواضح أهم من الأرقام، فكتبنا تفاصيل كل جهاز كما يُفحص في الواقع: السعة، الطاقة، الضمان، وطريقة العناية.</p>
             <p>اليوم صار المتجر مساحة تجمع التشكيلة والشرح معاً. نبني ثقتك قبل الطلب، ونرتّب الرحلة بعده: تأكيد الطلب، تجهيزه، ثم متابعته برقم واضح حتى يصل إلى بابك.</p>
           </div>
         </section>
@@ -379,7 +379,7 @@ export function AboutPage() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">أرقام تختصر الرحلة</span>
-              <h2 id="about-stats-title">إيفا في أربعة أرقام</h2>
+              <h2 id="about-stats-title">فيلا هوم في أربعة أرقام</h2>
               <p>مؤشرات نحدّثها مع كل موسم وكل قسم جديد يدخل المعرض.</p>
             </div>
           </div>
@@ -391,7 +391,7 @@ export function AboutPage() {
             <div>
               <span className="eyebrow">ما نؤمن به</span>
               <h2 id="about-values-title">أربع قيم تحكم كل قرار</h2>
-              <p>من اختيار الخامة إلى طريقة الرد على رسالتك.</p>
+              <p>من اختيار الجهاز إلى طريقة الرد على رسالتك.</p>
             </div>
           </div>
           <div className="about-values">{aboutValues.map((value) => <article className="glass-card value-card" key={value.title}><span className="value-icon">{value.icon}</span><h3>{value.title}</h3><p>{value.text}</p></article>)}</div>
@@ -446,12 +446,12 @@ export function AboutPage() {
         <section className="about-cta glass-dark">
           <div>
             <span className="eyebrow"><Sparkles size={14} />الخطوة التالية</span>
-            <h2>جاهزة لتختاري خامتك الأولى؟</h2>
-            <p>ابدئي من المعرض لتتصفّحي التفاصيل، أو ارسلي لنا ما تبحثين عنه وسنقترح عليك بديلة مناسبة.</p>
+            <h2>جاهزة لتختاري جهازك الأول؟</h2>
+            <p>ابدئي من المتجر لتتصفّحي التفاصيل، أو ارسلي لنا ما تبحثين عنه وسنقترح عليك الجهاز المناسب.</p>
           </div>
           <div className="cta-actions">
-            <Link href="/catalog" className="button button-primary">تصفحي الأقمشة <ArrowLeft size={16} /></Link>
-            <a href={siteConfig.whatsappUrl('مرحباً إيفا، أحتاج مساعدة في اختيار قماش')} target="_blank" rel="noreferrer" className="button button-outline"><MessageCircle size={16} />اسألينا عبر واتساب</a>
+            <Link href="/catalog" className="button button-primary">تصفحي المنتجات <ArrowLeft size={16} /></Link>
+            <a href={siteConfig.whatsappUrl('مرحباً فيلا هوم، أحتاج مساعدة في اختيار جهاز')} target="_blank" rel="noreferrer" className="button button-outline"><MessageCircle size={16} />اسألينا عبر واتساب</a>
           </div>
         </section>
       </main>
@@ -520,29 +520,29 @@ function StatCard({ stat }: { stat: AboutStat }) {
   )
 }
 const extraGuideQuestions: ProductFaq[] = [
-  { question: 'هل أحتاج إلى بطانة؟', answer: 'إذا ظهر حقل الشفافية بعبارة شفاف أو نصف شفاف فالأجدر استخدام بطانة. القطع الفاتحة والخفيفة تحتاج بطانة دائماً، بينما القماش غير الشفاف يكفي نفسه في الفساتين والعبايات.' },
-  { question: 'كيف أختبر المرونة قبل الشراء؟', answer: 'اسحبي القماش برفق بين إصبعين في الاتجاهين: المطاطي يعود إلى مكانه فوراً، والمرونة الخفيفة تعود ببطء، وغير المطاطي يقاوم السحب أصلاً. تفاصيل كل منتج مكتوبة في حقل المرونة.' },
-  { question: 'كيف أعتني بالقماش المطرز؟', answer: 'التطريز الحساس يفضّل التنظيف الجاف أو الغسيل اليدوي بماء فاتر مع قلب القطعة قبل التجفيف. تجنّبي المجفف وتعريض التطريز لخطافات الأثاث.' },
-  { question: 'ما الفرق بين الكريب والتويل؟', answer: 'الكريب سطحه مطفي بملمس حبيبي خفيف ويستقيم بسرعة، أما التويل فنسيجه قطري أوضح وأكثر ثباتاً في البنية، وهو أنسب للبناطيل والقطع الرسمية.' },
-  { question: 'كم متراً أحتاج لعمّة كاملة؟', answer: 'العباءة المستقيمة تحتاج عادة بين ٣ و٤ أمتار، وتزيد القطعة ذات الأكمام الواسعة أو التراكيب. أضيفي نصف متر إضافي للقص إن كان النمط مزدوجاً.' },
+  { question: 'ما الفرق بين مكيف سبليت وإنفرتر؟', answer: 'مكيف الإنفرتر يغيّر سرعة الضاغط حسب الحاجة فيستهلك طاقة أقل ويعمل بهدوء أكبر، بينما السبليت العادي يعمل بسرعتين فقط وهو أرخص في الشراء الأول.' },
+  { question: 'كم سعة أحتاج لغرفتي؟', answer: 'القاعدة السريعة: نحو 600 وحدة تبريد لكل متر مربع في الغرف العادية، وتزيد في الأدوار العلوية أو الغرف ذات الزجاج الكبير. اسألينا بمساحة غرفتك ونقترح السعة المناسبة.' },
+  { question: 'هل الأسعار تشمل التركيب؟', answer: 'الأسعار المعروضة هي سعر الجهاز فقط. التركيب والمواسير يُحسبان حسب المسافة والموقع، ويُبلَّغان لك قبل التأكيد حتى لا تفاجئي عند التسليم.' },
+  { question: 'ما الفرق بين غسالة أوتوماتيك ونصف أوتوماتيك؟', answer: 'الأوتوماتيك يغسل واليجفف ويفتح الغطاء بنفسه في النهاية، بينما نصف الأوتوماتيك يحتاج منك تفريغ الماء وتجفيف الغسيل يدوياً وهو أرخص في السعر والصيانة.' },
+  { question: 'كيف أحسب استهلاك الكهرباء لجهاز؟', answer: 'اضربي قدرة الجهاز بالأطوار التشغيل اليومية: مثال تلفزيون 110 واط × 6 ساعات = 0.66 كيلوواط ساعة يومياً. مواصفات كل جهاز مكتوبة في صفحته.' },
 ]
 
 const fabricTips = [
-  { use: 'فستان يومي', fabric: 'لينن قطن أو كريب سبانديكس', weight: 'خفيف إلى متوسط', tip: 'اختر لوناً صلباً يتحمّل الغسيل المتكرر.' },
-  { use: 'فستان سهرة', fabric: 'ساتان أو تافتا مطرزة', weight: 'متوسط إلى ثقيل', tip: 'لمعة هادئة وبطانة تمنح القماش سقوطاً أجمل.' },
-  { use: 'عباءة أو برنوش', fabric: 'كريب مطرز أو جاكار', weight: 'متوسط', tip: 'راعي السقوط والطول قبل قصّ الأكمام.' },
-  { use: 'بناطيل وتنانير', fabric: 'تويل سبانديكس أو تويل قطني', weight: 'متوسط إلى ثقيل', tip: 'مرونة باتجاه واحد تكفي لراحة الحركة.' },
-  { use: 'جاكيت شتوي', fabric: 'مخمل', weight: 'ثقيل', tip: 'الوبرة الكثيفة تحفظ الدفئة وتقلل التجعيد.' },
-  { use: 'حفلة ومناسبة', fabric: 'ترتر هولوغرام', weight: 'متوسط', tip: 'قصّة بسيطة لأن البريق يضيف حجماً بصرياً.' },
+  { use: 'غرفة نوم صغيرة', fabric: 'مكيف سبليت 9 آلاف وحدة', weight: 'حتى 12 م²', tip: 'اختر موديلاً هادئاً ووضع ليل مناسب للنوم.' },
+  { use: 'صالة كبيرة', fabric: 'مكيف 24 ألف وحدة أو قطعتين', weight: '24 إلى 36 م²', tip: 'تقسيم الحمل على جهازين يبرد أسرع ويستهلك أقل.' },
+  { use: 'عائلة من 4 أفراد', fabric: 'غسالة أوتوماتيك 8 كجم', weight: '8 كجم غسيل', tip: 'قيّس مدخل الغسالة ومساحة بابها قبل الشراء.' },
+  { use: 'تخزين أسبوعي', fabric: 'ثلاجة نوفروست 500 لتر', weight: '500 لتر', tip: 'اترك هامشاً لفتح الباب بالكامل وتهوية الخلفية.' },
+  { use: 'مطبخ مزدحم', fabric: 'خلاط وميكروويف معاً', weight: '1.4 لتر و25 لتر', tip: 'تأكد من مساحة الطاولة قبل إضافة الأجهزة.' },
+  { use: 'تهوية الصيف', fabric: 'مروحة سقف 16 بوصة', weight: '16 بوصة', tip: 'قِس عرض الغرفة وارتفاع السقف قبل الشراء.' },
 ]
 
 const qualityChecks = [
-  'اللون متجانس من الحافة إلى الحافة دون تدرّج مفاجئ.',
-  'الخيط لا ينفلت بسحب خفيف على الحافة المقصوصة.',
-  'الوزن يواجد مع الوصف: خفيف لا يعني رديئاً، وثقيل لا يعني مريحاً.',
-  'الطباعة أو التطريز متماسك من الوجهين.',
-  'العطر غائب، لأن بقايا المعالجة الكيميائية تظهر لاحقاً.',
-  'العرض مطابق للمكتوب، ففرق السنتيمترات يغيّر حساب الكمية.',
+  'الموديل والسعة مكتوبان في الفاتورة ومطابقان لصفحة المنتج.',
+  'التغليف سليم والملصقات والأكواد غير مخدوشة.',
+  'السعر يشمل الضمان وسياسة الاستبدال مكتوبة بوضوح.',
+  'استهلاك الطاقة مذكور في المواصفات ومطابق لاحتياجك اليومي.',
+  'قطع الغيار متوفرة محلياً للماركة التي اخترتها.',
+  'رقم الطلب وفاتورة الشراء محفوظان بعد الاستلام.',
 ]
 
 export function FabricGuidePage() {
@@ -551,26 +551,26 @@ export function FabricGuidePage() {
     <>
       <GlassStyles />
       <main className="container-eva info-page">
-        <div className="breadcrumbs"><Link href="/">الرئيسية</Link><span>›</span><span>دليل الأقمشة</span></div>
+        <div className="breadcrumbs"><Link href="/">الرئيسية</Link><span>›</span><span>دليل الأجهزة</span></div>
 
         <section className="info-heading">
           <span className="eyebrow"><Ruler size={14} />تعلّمي قبل أن تختاري</span>
-          <h1>دليل الأقمشة الشامل</h1>
-          <p>كل خامة لها إيقاعها وطريقة عناية مختلفة. ابدأي من هذه الأسئلة الثلاثة، ثم اقرئي الإجابات السريعة، وأخيراً افتحي صفحة المنتج لتفاصيل الخامة التي تعجبك.</p>
+          <h1>دليل الأجهزة الشامل</h1>
+          <p>لكل جهاز مواصفاته وطريقة عناية مختلفة. ابدأي من هذه الأسئلة الثلاثة، ثم اقرئي الإجابات السريعة، وأخيراً افتحي صفحة المنتج لتفاصيل الجهاز الذي يعجبك.</p>
         </section>
 
         <section className="steps-grid" aria-label="ثلاثة أسئلة قبل الشراء">
           <article className="glass-card">
             <span className="chip">الخطوة ١</span>
-            <div className="value-card"><h3>حددي الاستخدام</h3><p>فستان يومي، سهرة، عباءة، بناطيل أو قطعة عملية؟ الاستخدام يضيّق الخيارات إلى خامات معدودة.</p></div>
+            <div className="value-card"><h3>حددي المساحة</h3><p>غرفة نوم، صالة، مطبخ أو مكتب؟ المساحة والاستخدام يضيّقان الخيارات إلى أجهزة معدودة.</p></div>
           </article>
           <article className="glass-card">
             <span className="chip">الخطوة ٢</span>
-            <div className="value-card"><h3>قارني الخامة</h3><p>الوزن، العرض، المرونة، الشفافية والتشطيب؛ خمس قراءات تكفي لتجنّب المفاجآت.</p></div>
+            <div className="value-card"><h3>قارني المواصفات</h3><p>السعة، الطاقة، الضمان، السعر والاستهلاك؛ خمس قراءات تكفي لتجنّب المفاجآت.</p></div>
           </article>
           <article className="glass-card">
             <span className="chip">الخطوة ٣</span>
-            <div className="value-card"><h3>احسبي الكمية</h3><p>أضيفي هامشاً للقص والخياطة، ثم اطلبي نصف متر كبداية وزيدي عند الحاجة.</p></div>
+            <div className="value-card"><h3>احسبي الميزانية</h3><p>قارني السعر مع الاستهلاك والضمان، ثم اطلبي الجهاز بضغطة واحدة وادفعي عند الاستلام.</p></div>
           </article>
         </section>
 
@@ -601,20 +601,20 @@ export function FabricGuidePage() {
           <div className="section-head-tight">
             <div>
               <span className="eyebrow">جدول عملي</span>
-              <h2 id="guide-tips-title">نصائح اختيار القماش حسب القطعة</h2>
-              <p>مرجع سريع تراجعينه قبل إضافة أي خامة إلى السلة.</p>
+              <h2 id="guide-tips-title">نصائح اختيار الجهاز حسب المساحة</h2>
+              <p>مرجع سريع تراجعينه قبل إضافة أي جهاز إلى السلة.</p>
             </div>
             <span className="chip"><Layers size={13} />٦ حالات شائعة</span>
           </div>
-          <div className="tips-table-wrap" role="region" aria-label="جدول نصائح اختيار القماش حسب القطعة" tabIndex={0}>
+          <div className="tips-table-wrap" role="region" aria-label="جدول نصائح اختيار الجهاز حسب المساحة" tabIndex={0}>
             <table className="tips-table">
-              <caption>اخترِي صفّ قطعتك ثم اقرئي الخامة والوزن والملاحظة.</caption>
+              <caption>اخترِي صفّ مساحتك ثم اقرئي الجهاز والسعة والملاحظة.</caption>
               <thead>
                 <tr>
-                  <th scope="col">القطعة</th>
-                  <th scope="col">الخامة المقترحة</th>
-                  <th scope="col">الوزن</th>
-                  <th scope="col">ملاحظة القياس</th>
+                  <th scope="col">المساحة أو الحاجة</th>
+                  <th scope="col">الجهاز المقترح</th>
+                  <th scope="col">السعة أو القدرة</th>
+                  <th scope="col">ملاحظة</th>
                 </tr>
               </thead>
               <tbody>
@@ -636,23 +636,23 @@ export function FabricGuidePage() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">فحص سريع</span>
-              <h2 id="guide-quality-title">علامات خامة جيدة</h2>
-              <p>ست نقاط تراجعينها على العينة قبل إتمام الطلب.</p>
+              <h2 id="guide-quality-title">علامات جهاز سليم</h2>
+              <p>ست نقاط تراجعينها قبل إتمام الطلب.</p>
             </div>
           </div>
           <ul className="guide-checklist">
             {qualityChecks.map((item) => <li key={item}><Check size={15} />{item}</li>)}
           </ul>
           <div className="chip-row" style={{ marginTop: '22px' }}>
-            <span className="chip"><Scissors size={13} />قصّ بسيط</span>
-            <span className="chip"><Heart size={13} />عناية بالمطرز</span>
+            <span className="chip"><Scissors size={13} />تغليف سليم</span>
+            <span className="chip"><Heart size={13} />ضمان مكتوب</span>
             <span className="chip"><Clock size={13} />رد خلال ساعات العمل</span>
             <span className="chip"><ShieldCheck size={13} />فحص قبل الشحن</span>
           </div>
         </section>
 
         <div className="center-action">
-          <Link href="/catalog" className="button button-primary">ابدئي من المعرض <ArrowLeft size={16} /></Link>
+          <Link href="/catalog" className="button button-primary">ابدئي من المتجر <ArrowLeft size={16} /></Link>
         </div>
       </main>
     </>
@@ -675,7 +675,7 @@ export function ContactPage() {
   const [whatsappUrl, setWhatsappUrl] = useState('')
   const [tabOpened, setTabOpened] = useState(false)
 
-  const composeText = (): string => `مرحباً إيفا ستور،${'\n'}الاسم: ${name.trim()}${'\n'}الهاتف: ${phone.trim()}${'\n'}${message.trim()}`
+  const composeText = (): string => `مرحباً فيلا هوم،${'\n'}الاسم: ${name.trim()}${'\n'}الهاتف: ${phone.trim()}${'\n'}${message.trim()}`
 
   const validate = (): boolean => {
     const next: ContactErrors = {}
@@ -746,18 +746,18 @@ export function ContactPage() {
         <section className="contact-layout">
           <div className="contact-intro">
             <span className="eyebrow"><MessageCircle size={14} />نحن قريبون</span>
-            <h1>سؤال عن خامة أو طلب؟</h1>
+            <h1>سؤال عن جهاز أو طلب؟</h1>
             <p>اكتبي لنا ما يدور في بالك. إن تعذّر إرسال الرسالة من الموقع مباشرة، نحوّلها تلقائياً إلى محادثة واتساب مكتوبة برسالتك نفسها.</p>
 
             <div className="contact-methods">
-              <a href={siteConfig.whatsappUrl()} target="_blank" rel="noreferrer" aria-label="فتح محادثة واتساب مع إيفا ستور">
+              <a href={siteConfig.whatsappUrl()} target="_blank" rel="noreferrer" aria-label="فتح محادثة واتساب مع فيلا هوم">
                 <MessageCircle size={19} /><span><strong>واتساب</strong><small dir="ltr">{siteConfig.phone}</small></span><ArrowLeft size={15} />
               </a>
               <a href={`tel:${siteConfig.phone}`} aria-label={`الاتصال على ${siteConfig.phone}`}>
                 <Phone size={19} /><span><strong>اتصال هاتفي</strong><small dir="ltr">{siteConfig.phone}</small></span><ArrowLeft size={15} />
               </a>
               <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" aria-label={siteConfig.instagramText}>
-                <Instagram size={19} /><span><strong>إنستغرام</strong><small>راسلينا أو شاهدي أحدث القطع</small></span><ArrowLeft size={15} />
+                <Instagram size={19} /><span><strong>إنستغرام</strong><small>راسلينا أو شاهدي أحدث الأجهزة</small></span><ArrowLeft size={15} />
               </a>
             </div>
 
@@ -775,7 +775,7 @@ export function ContactPage() {
                 <strong>الموقع والعنوان</strong>
                 <p>بغداد نستقبل الطلبات عبر المتجر أونلاين، ونرتّب موعد الاستلام بعد تأكيد الطلب. التوصيل يشمل جميع المحافظات العراقية، وللعنوان التفصيلي نرسله لك عند التأكيد.</p>
               </div>
-              <a className="button button-light" href={siteConfig.whatsappUrl('مرحباً إيفا، أرجو إرسال موقع المعرض وساعات العمل')} target="_blank" rel="noreferrer">اطلبي الموقع على الخريطة <ArrowLeft size={16} /></a>
+              <a className="button button-light" href={siteConfig.whatsappUrl('مرحباً فيلا هوم، أرجو إرسال موقع المعرض وساعات العمل')} target="_blank" rel="noreferrer">اطلبي الموقع على الخريطة <ArrowLeft size={16} /></a>
             </div>
           </div>
 
@@ -801,7 +801,7 @@ export function ContactPage() {
               </div>
               <div className="field">
                 <label htmlFor="contact-message">الرسالة <small>(مطلوب)</small></label>
-                <textarea id="contact-message" className="glass-input" rows={6} value={message} onChange={(event) => setMessage(event.target.value)} placeholder="اكتبي سؤالك أو نوع الخامة التي تبحثين عنها" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? 'contact-message-error' : undefined} />
+                <textarea id="contact-message" className="glass-input" rows={6} value={message} onChange={(event) => setMessage(event.target.value)} placeholder="اكتبي سؤالك أو الجهاز الذي تبحثين عنه" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? 'contact-message-error' : undefined} />
                 {errors.message && <small className="field-error" id="contact-message-error">{errors.message}</small>}
               </div>
             </div>
@@ -832,7 +832,7 @@ export function ContactPage() {
             {state !== 'idle' && (
               <div className="form-actions">
                 <button type="button" className="button button-outline" onClick={reset}>كتابة رسالة أخرى</button>
-                <Link href="/catalog" className="button button-primary">تصفحي الأقمشة <ArrowLeft size={16} /></Link>
+                <Link href="/catalog" className="button button-primary">تصفحي المنتجات <ArrowLeft size={16} /></Link>
               </div>
             )}
 
@@ -855,10 +855,10 @@ const policies: PolicyContent[] = [
   {
     id: 'terms',
     title: 'شروط الاستخدام',
-    intro: 'باستخدامك موقع إيفا ستور فإنك تقرّين بصحة البيانات التي تدخلينها وأن الهدف من الموقع هو طلب المنتجات المتاحة لدينا.',
+    intro: 'باستخدامك موقع فيلا هوم فإنك تقرّين بصحة البيانات التي تدخلينها وأن الهدف من الموقع هو طلب المنتجات المتاحة لدينا.',
     points: [
       'الأسعار والمواصفات والألوان قابلة للتحديث، ويظهر السعر النهائي في مراجعة الطلب قبل التأكيد.',
-      'كمية القماش تُحسب بالمتر ونصف المتر، والمخزون يُخصم عند تأكيد الطلب لا عند إضافته إلى السلة.',
+      'كمية كل جهاز تُحسب بالقطعة، والمخزون يُخصم عند تأكيد الطلب لا عند إضافته إلى السلة.',
       'يحق لنا التواصل معك للتأكيد عبر الهاتف أو واتساب قبل الشحن، ويُعد الطلب مؤكداً بعد هذا التواصل.',
       'يُمنع إعادة بيع المنتجات أو استخدام صور المتجر دون إذن مكتوب.',
     ],
@@ -882,7 +882,7 @@ const policies: PolicyContent[] = [
     intro: 'نجهّز الطلبات بعد التأكيد، ويظهر رقم الطلب في صفحة النجاح ويُرسل لك مع تحديثات الشحن.',
     points: [
       'التوصيل متاح إلى جميع المحافظات العراقية، ويعتمد الوقت على بعد المحافظة وحالة الطلب.',
-      'رسوم الشحن تُحتسب في مراجعة الطلب، وتصبح مجانية للطلبات التي تتجاوز ٥٠٬٠٠٠ دينار.',
+      'رسوم الشحن تُحتسب في مراجعة الطلب، وتصبح مجانية للطلبات التي تتجاوز ١٠٠٬٠٠٠ دينار.',
       'الشحن الدولي متاح عند توفّر شحنة مناسبة، ويُتفق على التفاصيل قبل الدفع.',
       'نحدّثك عبر واتساب عند خروج الطلب وعند تسليمه إلى مندوب الشحن.',
     ],
@@ -891,14 +891,14 @@ const policies: PolicyContent[] = [
   {
     id: 'returns',
     title: 'الإرجاع والتبديل',
-    intro: 'نقبل الإرجاع أو التبديل خلال ٤٨ ساعة من الاستلام إذا وصل القماش مختلفاً عن المواصفات أو حدث خطأ في التنفيذ.',
+    intro: 'نقبل الإرجاع أو التبديل خلال ٤٨ ساعة من الاستلام إذا وصل الجهاز مختلفاً عن المواصفات أو كان معيباً.',
     points: [
-      'يجب أن يبقى القماش بحالته الأصلية وغير مقصوص ولا مستعمل.',
-      'الأقمشة المقصوصة حسب الطلب أو المقطوعة حسب القياس غير قابلة للإرجاع.',
+      'يجب أن يبقى الجهاز بحالته الأصلية مع تغليفه وملحقاته ولم يُستخدم.',
+      'الأجهزة التي أُصيبت سوء الاستخدام أو فُتحت نهائياً خارج فترة الفحص غير قابلة للإرجاع.',
       'في حال ثبوت خطأ منّا نتحمل رسوم الإرجاع ونشحن البديل على حسابنا.',
-      'التواصل الأول يتم عبر واتساب مع إرفاق صورة للقماش ورقم الطلب.',
+      'التواصل الأول يتم عبر واتساب مع إرفاق صورة للجهاز ورقم الطلب.',
     ],
-    note: 'اللون المطابق للصور مضمون، والاختلاف البسيط تحت الإضاءة لا يُعد عيباً.',
+    note: 'المواصفات المكتوبة في صفحة المنتج مضمونة، وأي اختلاف جوهري يُعد سبباً للتبديل.',
   },
 ]
 
@@ -982,7 +982,7 @@ interface StoredOrder {
   items?: StoredOrderItem[]
 }
 
-const ORDER_KEYS = ['eva-orders', 'eva-order', 'eva-last-order', 'eva-fabrics-orders', 'eva-fabrics-order', 'eva-checkout-order', 'eva-pending-order', 'eva-order-number']
+const ORDER_KEYS = ['villa-home-orders', 'villa-home-order', 'villa-home-last-order', 'villa-home-pending-order', 'villa-home-order-number']
 
 const statusSteps = ['تم استلام الطلب', 'قيد المراجعة', 'جاهز للشحن', 'في الطريق إليك', 'تم التوصيل']
 
@@ -1119,11 +1119,11 @@ const readOrders = (): StoredOrder[] => {
 const rememberOrder = (order: StoredOrder): void => {
   if (typeof window === 'undefined') return
   try {
-    const raw = window.localStorage.getItem('eva-orders')
+    const raw = window.localStorage.getItem('villa-home-orders')
     const existing: StoredOrder[] = []
     if (raw) collectOrders(JSON.parse(raw), existing)
     const next = [order, ...existing.filter((item) => item.orderNumber.toLowerCase() !== order.orderNumber.toLowerCase())].slice(0, 12)
-    window.localStorage.setItem('eva-orders', JSON.stringify(next))
+    window.localStorage.setItem('villa-home-orders', JSON.stringify(next))
   } catch {
     return
   }
@@ -1221,7 +1221,7 @@ export function OrderConfirmationPage({ orderNumber }: { orderNumber: string }) 
             <p>لم يصلنا رقم طلب في هذا الرابط. افتحي رسالة التأكيد التي وصلك، أو ابحثي عن طلبك برقم الطلب.</p>
             <div className="empty-actions">
               <Link href="/order-tracking" className="button button-primary">تتبّع الطلب <ArrowLeft size={16} /></Link>
-              <a href={siteConfig.whatsappUrl('مرحباً إيفا، أحتاج مساعدة في الطلب')} target="_blank" rel="noreferrer" className="button button-outline"><MessageCircle size={16} />تواصلي معنا</a>
+              <a href={siteConfig.whatsappUrl('مرحباً فيلا هوم، أحتاج مساعدة في الطلب')} target="_blank" rel="noreferrer" className="button button-outline"><MessageCircle size={16} />تواصلي معنا</a>
             </div>
           </section>
         </main>
@@ -1236,7 +1236,7 @@ export function OrderConfirmationPage({ orderNumber }: { orderNumber: string }) 
         <div className="glass glass-card confirmation-panel">
           <div className="confirmation-mark"><Check size={30} /></div>
           <span className="eyebrow">تم استلام طلبك</span>
-          <h1>شكراً لاختيارك إيفا.</h1>
+          <h1>شكراً لاختيارك فيلا هوم.</h1>
           <p>سنراجع تفاصيل طلبك ونتواصل معك لتأكيد التوصيل. احتفظي برقم الطلب لمتابعة حالته في أي وقت.</p>
           <div className="confirmation-number"><small>رقم الطلب</small><strong dir="ltr">{order.orderNumber}</strong></div>
           <OrderStatusPanel order={order} />
@@ -1245,7 +1245,7 @@ export function OrderConfirmationPage({ orderNumber }: { orderNumber: string }) 
             <Link href={`/order-tracking?order=${encodeURIComponent(order.orderNumber)}`} className="button button-outline"><Search size={16} />تتبّع الطلب</Link>
             <a href={siteConfig.whatsappUrl(`مرحباً، أستفسر عن الطلب رقم ${order.orderNumber}`)} target="_blank" rel="noreferrer" className="button button-outline"><MessageCircle size={16} />تواصلي عبر واتساب</a>
           </div>
-          <div className="confirmation-trust"><Truck size={17} /><span>التوصيل مجاني للطلبات التي تتجاوز ٥٠٬٠٠٠ دينار، ونحدّث الحالة عبر واتساب.</span></div>
+          <div className="confirmation-trust"><Truck size={17} /><span>التوصيل مجاني للطلبات التي تتجاوز ١٠٠٬٠٠٠ دينار، ونحدّث الحالة عبر واتساب.</span></div>
         </div>
       </main>
     </>
@@ -1299,7 +1299,7 @@ export function OrderTrackingPage() {
           <form className="tracking-form" onSubmit={submit} noValidate>
             <label className="sr-only" htmlFor="tracking-order">رقم الطلب</label>
             <Search size={18} />
-            <input id="tracking-order" value={value} onChange={(event) => setValue(event.target.value)} placeholder="مثال: EVA-1024" dir="ltr" aria-invalid={Boolean(error)} aria-describedby={error ? 'tracking-error' : undefined} />
+            <input id="tracking-order" value={value} onChange={(event) => setValue(event.target.value)} placeholder="مثال: VH-260929-1234" dir="ltr" aria-invalid={Boolean(error)} aria-describedby={error ? 'tracking-error' : undefined} />
             <button type="submit" className="button button-primary">عرض الحالة</button>
           </form>
 
@@ -1332,7 +1332,7 @@ export function OrderTrackingPage() {
               <h1>لا توجد طلبات محفوظة بعد</h1>
               <p>عند إتمام أول طلب يُحفظ رقم الطلب هنا تلقائياً لتتبعي حالته بدون تسجيل دخول.</p>
               <div className="empty-actions">
-                <Link href="/catalog" className="button button-primary">تصفحي الأقمشة <ArrowLeft size={16} /></Link>
+                <Link href="/catalog" className="button button-primary">تصفحي المنتجات <ArrowLeft size={16} /></Link>
                 <Link href="/contact" className="button button-outline">تواصلي معنا <ArrowLeft size={16} /></Link>
               </div>
             </section>

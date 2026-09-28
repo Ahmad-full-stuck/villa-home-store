@@ -16,16 +16,6 @@ const readArrayOrNull = (key: string): unknown[] | null => {
   }
 }
 
-const dropLegacyCart = (): void => {
-  if (typeof window === 'undefined') return
-  try {
-    window.localStorage.removeItem('eva-cart')
-    window.localStorage.removeItem('eva-fabrics-cart-v1')
-  } catch {
-    return
-  }
-}
-
 // An earlier build appended each merged cart line back onto the list it was
 // building, so the stored value could hold thousands of duplicates of the same
 // product and colour. The cart only ever keeps one line per pair anyway, so
@@ -58,14 +48,8 @@ const compactStoredCart = (raw: unknown[]): unknown[] => {
 
 const readStoredCart = (): unknown[] => {
   const current = readArrayOrNull(CART_KEY)
-  if (current !== null) {
-    dropLegacyCart()
-    return compactStoredCart(current)
-  }
-  const legacy = readArrayOrNull('eva-fabrics-cart-v1')
-  if (legacy === null) return []
-  dropLegacyCart()
-  return compactStoredCart(legacy)
+  if (current !== null) return compactStoredCart(current)
+  return []
 }
 
 const findProduct = (products: Product[], slug: string): Product | undefined => products.find((product) => product.slug === slug)

@@ -18,7 +18,7 @@ export function SiteFooter({ routes, categories }: SiteFooterProps) {
     <footer className="site-footer glass-dark">
       <div className="container-eva footer-brand footer-top">
         <Logo light />
-        <p>معرض أقمشة عربي يساعدك على معرفة الخامة والمرونة واللون قبل اختيار القطعة.</p>
+        <p>متجر أجهزة منزلية يساعدك على معرفة المواصفات والسعة والاستهلاك والضمان قبل طلب الجهاز.</p>
         <div className="social-links">
           <a href={siteConfig.whatsappUrl()} target="_blank" rel="noreferrer" aria-label="تواصلي معنا عبر واتساب"><MessageCircle size={17} /></a>
           <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" aria-label={siteConfig.instagramText}><Instagram size={17} /></a>
@@ -26,8 +26,8 @@ export function SiteFooter({ routes, categories }: SiteFooterProps) {
       </div>
       <div className="container-eva footer-grid">
         <div className="footer-col">
-          <h2>الأقمشة</h2>
-          <Link href="/catalog">كل الأقمشة</Link>
+          <h2>المنتجات</h2>
+          <Link href="/catalog">كل المنتجات</Link>
           {categories.slice(0, 5).map((category) => <Link key={category.id} href={`/catalog?category=${encodeURIComponent(category.id)}`}>{category.name}</Link>)}
         </div>
         <div className="footer-col">
@@ -45,7 +45,7 @@ export function SiteFooter({ routes, categories }: SiteFooterProps) {
         <div className="footer-col">
           <h2>نطاق الخدمة</h2>
           <p>نوصل إلى {nearbyGovernorates.join('، ')} وجميع محافظات العراق.</p>
-          <a href={siteConfig.whatsappUrl('مرحباً إيفا ستور، أستفسر عن الشحن الدولي للأقمشة')} target="_blank" rel="noreferrer"><MapPin size={15} />شحن دولي عند التوفر</a>
+          <a href={siteConfig.whatsappUrl('مرحباً فيلا هوم، أستفسر عن الشحن الدولي للأجهزة')} target="_blank" rel="noreferrer"><MapPin size={15} />شحن دولي عند التوفر</a>
         </div>
       </div>
       <div className="footer-bottom">

@@ -1,39 +1,16 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Layers, LayoutGrid, Sparkles, Truck, Wallet } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { Link } from 'wouter'
-import type { Category, Product } from '@/types'
-import { CountUp } from './CountUp'
 import { SmartImage } from '@/components/ui/SmartImage'
 
-interface HeroSectionProps {
-  products: Product[]
-  categories: Category[]
-}
+const slides = [
+  { src: 'fabrics/hero.jpg', alt: 'نماذج من أقمشة إيفا ستور' },
+  { src: 'fabrics/rose.jpg', alt: 'قماش مطرز بلون وردي من تشكيلة إيفا' },
+  { src: 'fabrics/blue.jpg', alt: 'قماش أزرق ناعم من تشكيلة إيفا' },
+  { src: 'fabrics/emerald.jpg', alt: 'قماش أخضر مرن من تشكيلة إيفا' },
+]
 
-interface HeroStat {
-  key: string
-  icon: ReactNode
-  value: number
-  prefix: string
-  suffix: string
-  label: string
-  trend: string
-}
-
-export function HeroSection({ products, categories }: HeroSectionProps) {
-  const stats: HeroStat[] = [
-    { key: 'fabrics', icon: <Layers size={16} />, value: products.length, prefix: '+', suffix: '', label: 'خامة متاحة', trend: 'تشكيلة تتجدد' },
-    { key: 'categories', icon: <LayoutGrid size={16} />, value: categories.length, prefix: '+', suffix: '', label: 'أقسام مختارة', trend: 'لكل مشروع' },
-    { key: 'delivery', icon: <Truck size={16} />, value: 24, prefix: '', suffix: '', label: 'ساعة للتوصيل', trend: 'كل محافظات العراق' },
-    { key: 'cash', icon: <Wallet size={16} />, value: 100, prefix: '', suffix: '٪', label: 'دفع عند الاستلام', trend: 'مريح وآمن' },
-  ]
-
-  const slides = [
-    { src: 'fabrics/hero.jpg', alt: 'نماذج من أقمشة إيفا ستور' },
-    { src: 'fabrics/rose.jpg', alt: 'قماش مطرز بلون وردي من تشكيلة إيفا' },
-    { src: 'fabrics/blue.jpg', alt: 'قماش أزرق ناعم من تشكيلة إيفا' },
-    { src: 'fabrics/emerald.jpg', alt: 'قماش أخضر مرن من تشكيلة إيفا' },
-  ]
+export function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0)
   const timerRef = useRef<number | undefined>(undefined)
 
@@ -98,22 +75,6 @@ export function HeroSection({ products, categories }: HeroSectionProps) {
           <div className="hero-vertical-label" aria-hidden="true">EVA · FABRICS</div>
         </div>
       </section>
-
-      <div className="container-eva" style={{ position: 'relative', zIndex: 2, marginTop: 'clamp(-84px, -5vw, -30px)' }}>
-        <div className="glass-card">
-          <span className="glass-pill">أرقام المعرض الآن</span>
-          <div className="stats-grid">
-            {stats.map((stat) => (
-              <div className="stat-card" key={stat.key} role="group" aria-label={`${stat.prefix}${stat.value.toLocaleString('ar-IQ')}${stat.suffix} ${stat.label}`}>
-                <span className="stat-icon" aria-hidden="true">{stat.icon}</span>
-                <strong className="stat-value"><CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} /></strong>
-                <span className="stat-label">{stat.label}</span>
-                <span className="stat-trend">{stat.trend}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   )
 }

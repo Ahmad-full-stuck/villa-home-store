@@ -54,7 +54,7 @@ export function HomePage({ products, categories, wishlist, onWish, onAdd }: Home
 
   return (
     <main>
-      <HeroSection products={products} categories={categories} />
+      <HeroSection />
 
       <PromoBar />
 

@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
+﻿import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { ArrowLeft, BadgeCheck, Check, ChevronDown, Clock, Heart, Instagram, Layers, MapPin, MessageCircle, PackageCheck, Phone, Ruler, RotateCcw, Scissors, Search, Send, ShieldCheck, Sparkles, Star, Truck } from 'lucide-react'
 import { Link, useLocation } from 'wouter'
 import type { ProductFaq } from '@/types'
-import { formatMeters, formatPrice, normalizeArabic } from '@/lib/catalog'
+import { formatQuantity, formatPrice, normalizeArabic } from '@/lib/catalog'
 import { guideQuestions } from '@/lib/fallback-data'
 import { apiUrl, siteConfig } from '@/lib/site'
 import { SmartImage } from '@/components/ui/SmartImage'
@@ -965,7 +965,7 @@ export function PoliciesPage() {
 interface StoredOrderItem {
   name: string
   color?: string
-  length?: number
+  quantity?: number
   total?: number
 }
 
@@ -1019,10 +1019,10 @@ const readItems = (value: unknown): StoredOrderItem[] => {
     if (!name) continue
     const item: StoredOrderItem = { name }
     const color = readText(record, ['colorName', 'color'])
-    const length = readNumber(record, ['quantity', 'length', 'meters'])
+    const quantity = readNumber(record, ['quantity', 'length', 'meters'])
     const total = readNumber(record, ['totalPrice', 'total', 'price'])
     if (color) item.color = color
-    if (length !== undefined) item.length = length
+    if (quantity !== undefined) item.quantity = quantity
     if (total !== undefined) item.total = total
     items.push(item)
   }
@@ -1183,7 +1183,7 @@ function OrderStatusPanel({ order }: { order: StoredOrder }) {
           {order.items.map((item, position) => (
             <div className="status-item" key={`${item.name}-${position}`}>
               <b>{item.name}{item.color ? ` · ${item.color}` : ''}</b>
-              <span>{item.length ? formatMeters(item.length) : ''}{item.total ? ` · ${formatPrice(item.total)}` : ''}</span>
+              <span>{item.quantity ? formatQuantity(item.quantity, 'قطعة') : ''}{item.total ? ` · ${formatPrice(item.total)}` : ''}</span>
             </div>
           ))}
         </div>

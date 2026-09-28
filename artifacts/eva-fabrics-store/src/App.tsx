@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from 'react'
+﻿import { useEffect, useState, type MouseEvent } from 'react'
 import { Route, Switch, useLocation } from 'wouter'
 import { Link } from 'wouter'
 import { ArrowLeft, Check, ShoppingBag } from 'lucide-react'
@@ -85,10 +85,10 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname])
 
-  const addToCart = (product: Product, color: ProductColor, length: number) => {
-    const result = addCartItem(cart, product, color, length)
+  const addToCart = (product: Product, color: ProductColor, quantity: number) => {
+    const result = addCartItem(cart, product, color, quantity)
     if (!result.available) {
-      setNotice('هذه الخامة غير متوفرة حالياً')
+      setNotice('هذا المنتج غير متوفر حالياً')
       return
     }
     setCart(result.cart)
@@ -103,7 +103,7 @@ function App() {
     })
   }
 
-  const updateCart = (key: string, length: number) => setCart((current) => updateCartItem(current, key, length))
+  const updateCart = (key: string, quantity: number) => setCart((current) => updateCartItem(current, key, quantity))
   const deleteCart = (key: string) => setCart((current) => removeCartItem(current, key))
   const completeOrder = (orderNumber: string) => {
     setCart([])
@@ -115,14 +115,14 @@ function App() {
     event.preventDefault()
     document.getElementById('main-content')?.focus()
   }
-  const cartMeters = cart.reduce((sum, item) => sum + item.length, 0)
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
   const pageProps = { products, categories, wishlist, onWish: toggleWishlist, onAdd: addToCart }
 
   return (
     <div className="app-shell" dir="rtl">
       <style>{shellStyles}</style>
       <a className="skip-link" href="#main-content" onClick={skipToContent}>تخطي إلى المحتوى</a>
-      <SiteHeader routes={routes} products={products} cartMeters={cartMeters} wishlistCount={wishlist.length} />
+      <SiteHeader routes={routes} products={products} cartCount={cartCount} wishlistCount={wishlist.length} />
       <div id="main-content" className="app-main" tabIndex={-1}>
         <Switch>
           <Route path="/" component={() => <HomePage {...pageProps} />} />

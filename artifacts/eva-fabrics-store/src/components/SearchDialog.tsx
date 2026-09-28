@@ -43,7 +43,7 @@ export function SearchDialog({ open, onClose, products }: SearchDialogProps) {
           <p className="search-results-count">{results.length ? `${results.length} نتائج مناسبة` : 'لا توجد نتائج مطابقة'}</p>
           {results.map((product) => <Link key={product.id} href={`/product/${product.slug}`} className="search-result-item" onClick={onClose}>
             <SmartImage src={product.image} alt="" sizes="64px" />
-            <span><strong>{product.name}</strong><small>{product.type} · {product.specs.width}</small></span>
+            <span><strong>{product.name}</strong><small>{product.type} · {product.specs.brand}</small></span>
             <b>{formatPrice(product.price)}</b>
           </Link>)}
         </div>}

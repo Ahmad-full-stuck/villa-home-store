@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import { ArrowLeft, Minus, Pencil, Plus, ShieldCheck, ShoppingBag, Trash2, Truck } from 'lucide-react'
 import { Link } from 'wouter'
 import type { CartItem } from '@/types'
-import { formatMeters, formatPrice, getCartTotals, orderKey } from '@/lib/catalog'
+import { formatQuantity, formatPrice, getCartTotals, orderKey } from '@/lib/catalog'
 import { SmartImage } from '@/components/ui/SmartImage'
 
 interface CartPageProps {
   cart: CartItem[]
-  onUpdate: (key: string, length: number) => void
+  onUpdate: (key: string, quantity: number) => void
   onRemove: (key: string) => void
 }
 
-const FREE_DELIVERY_AT = 50000
+const FREE_DELIVERY_AT = 100000
 
 const glassStyles = `
 .glass-scope { --glass-fill: rgba(255, 252, 248, .58); --glass-strong: rgba(255, 251, 247, .88); --glass-line: rgba(255, 255, 255, .72); --glass-shadow: 0 22px 48px rgba(74, 24, 43, .1); }
@@ -94,9 +94,9 @@ export function CartPage({ cart, onUpdate, onRemove }: CartPageProps) {
     return () => window.clearTimeout(timer)
   }, [cart.length])
 
-  const handleUpdate = (item: CartItem, nextLength: number) => {
-    onUpdate(orderKey(item), nextLength)
-    setAnnouncement(`تم تحديث كمية ${item.product.name} إلى ${formatMeters(nextLength)}`)
+  const handleUpdate = (item: CartItem, nextQuantity: number) => {
+    onUpdate(orderKey(item), nextQuantity)
+    setAnnouncement(`تم تحديث كمية ${item.product.name} إلى ${formatQuantity(nextQuantity, item.product.unit)}`)
   }
 
   const handleRemove = (item: CartItem) => {
@@ -112,14 +112,14 @@ export function CartPage({ cart, onUpdate, onRemove }: CartPageProps) {
         <div className="glass glass-card empty-card" tabIndex={-1} ref={emptyRef}>
           <div className="empty-icon"><ShoppingBag size={26} /></div>
           <h1>السلة هادئة الآن</h1>
-          <p>أضيفي قماشاً يعجبك، وستظهر تفاصيله هنا مع السعر لكل متر وإمكانية تعديل الكمية بنصف متر.</p>
-          <Link href="/catalog" className="button button-primary">تصفحي الأقمشة <ArrowLeft size={16} /></Link>
+          <p>أضيفي منتجاً يعجبك، وستظهر تفاصيله هنا مع السعر للقطعة وإمكانية تعديل الكمية.</p>
+          <Link href="/catalog" className="button button-primary">تصفحي المنتجات <ArrowLeft size={16} /></Link>
         </div>
       </main>
     )
   }
 
-  const meters = cart.reduce((sum, item) => sum + item.length, 0)
+  const units = cart.reduce((sum, item) => sum + item.quantity, 0)
   const remaining = Math.max(0, FREE_DELIVERY_AT - totals.subtotal)
   const progress = Math.min(100, Math.round((totals.subtotal / FREE_DELIVERY_AT) * 100))
 
@@ -135,7 +135,7 @@ export function CartPage({ cart, onUpdate, onRemove }: CartPageProps) {
         <div>
           <span className="eyebrow">اختياراتك</span>
           <h1>سلة التسوق</h1>
-          <p>{formatMeters(meters)} في السلة</p>
+          <p>{formatQuantity(units, 'قطعة')} في السلة</p>
         </div>
         <Link href="/catalog" className="underlined-link">متابعة التسوق <ArrowLeft size={15} /></Link>
       </div>
@@ -144,8 +144,8 @@ export function CartPage({ cart, onUpdate, onRemove }: CartPageProps) {
           <div className="sr-only" role="status" aria-live="polite">{announcement}</div>
           {cart.map((item) => {
             const key = orderKey(item)
-            const maxMeters = Math.min(item.product.stockMeters, item.color.stockMeters)
-            const lineTotal = item.product.price * item.length
+            const maxUnits = Math.min(item.product.stock, item.color.stock)
+            const lineTotal = item.product.price * item.quantity
             return (
               <article className="cart-item" key={key}>
                 <Link href={`/product/${item.product.slug}`} className="cart-item-image glass-card">
@@ -158,7 +158,7 @@ export function CartPage({ cart, onUpdate, onRemove }: CartPageProps) {
                       <Link href={`/product/${item.product.slug}`} className="product-name">{item.product.name}</Link>
                       <div className="cart-item-chips">
                         <span className="chip cart-item-color"><i style={{ backgroundColor: item.color.hex }} />{item.color.name}</span>
-                        <span className="chip glass-pill">{formatPrice(item.product.price)} / متر</span>
+                        <span className="chip glass-pill">{formatPrice(item.product.price)} / قطعة</span>
                       </div>
                     </div>
                     <div className="cart-item-tools">
@@ -168,12 +168,12 @@ export function CartPage({ cart, onUpdate, onRemove }: CartPageProps) {
                   </div>
                   <div className="cart-item-bottom">
                     <div className="quantity-control compact">
-                      <button type="button" onClick={() => handleUpdate(item, item.length - 0.5)} disabled={item.length <= 0.5} aria-label={`إنقاص كمية ${item.product.name}`}><Minus size={15} /></button>
-                      <output aria-label={`كمية ${item.product.name}`}>{formatMeters(item.length)}</output>
-                      <button type="button" onClick={() => handleUpdate(item, item.length + 0.5)} disabled={item.length >= maxMeters} aria-label={`زيادة كمية ${item.product.name}`}><Plus size={15} /></button>
+                      <button type="button" onClick={() => handleUpdate(item, item.quantity - 1)} disabled={item.quantity <= 1} aria-label={`إنقاص كمية ${item.product.name}`}><Minus size={15} /></button>
+                      <output aria-label={`كمية ${item.product.name}`}>{formatQuantity(item.quantity, item.product.unit)}</output>
+                      <button type="button" onClick={() => handleUpdate(item, item.quantity + 1)} disabled={item.quantity >= maxUnits} aria-label={`زيادة كمية ${item.product.name}`}><Plus size={15} /></button>
                     </div>
                     <div className="cart-item-total">
-                      <small>{formatMeters(item.length)} × {formatPrice(item.product.price)}</small>
+                      <small>{formatQuantity(item.quantity, item.product.unit)} × {formatPrice(item.product.price)}</small>
                       <strong>{formatPrice(lineTotal)}</strong>
                     </div>
                   </div>

@@ -3,18 +3,17 @@ export interface ProductColor {
   name: string
   hex: string
   available: boolean
-  stockMeters: number
+  stock: number
 }
 
 export interface ProductSpecs {
-  composition: string
-  width: string
+  brand: string
+  power: string
+  capacity: string
+  size: string
   weight: string
-  stretch: string
-  isStretch: boolean
-  opacity: string
+  warranty: string
   finish: string
-  care: string
   use: string
 }
 
@@ -39,7 +38,8 @@ export interface Product {
   faqs: ProductFaq[]
   isNew: boolean
   isFeatured: boolean
-  stockMeters: number
+  unit: string
+  stock: number
   createdAt: string
 }
 
@@ -71,7 +71,7 @@ export interface StorefrontData {
 export interface CartItem {
   product: Product
   color: ProductColor
-  length: number
+  quantity: number
 }
 
 export interface CheckoutForm {

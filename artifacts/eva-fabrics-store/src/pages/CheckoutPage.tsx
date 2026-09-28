@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
+﻿import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { ArrowLeft, ArrowRight, Check, CircleAlert, LoaderCircle, MapPin, MessageCircle, Navigation, Phone, RefreshCw, ShieldCheck, UserRound } from 'lucide-react'
 import { Link, useLocation } from 'wouter'
 import type { CartItem, CheckoutForm, CustomerProfile, OrderPayload } from '@/types'
-import { formatMeters, formatPrice, getCartTotals, getOrderNumber } from '@/lib/catalog'
+import { formatQuantity, formatPrice, getCartTotals, getOrderNumber } from '@/lib/catalog'
 import { apiUrl, siteConfig } from '@/lib/site'
 import { governorates } from '@/lib/fallback-data'
 import { SmartImage } from '@/components/ui/SmartImage'
@@ -265,7 +265,7 @@ export function CheckoutPage({ cart, onComplete }: CheckoutPageProps) {
     address: form.address.trim(),
     landmark: form.landmark.trim(),
     notes: form.notes.trim() || undefined,
-    items: cart.map((item) => ({ productId: item.product.id, productSlug: item.product.slug, productName: item.product.name, colorId: item.color.id, color: item.color.hex, colorName: item.color.name, quantity: item.length, unitPrice: item.product.price, totalPrice: item.product.price * item.length })),
+    items: cart.map((item) => ({ productId: item.product.id, productSlug: item.product.slug, productName: item.product.name, colorId: item.color.id, color: item.color.hex, colorName: item.color.name, quantity: item.quantity, unitPrice: item.product.price, totalPrice: item.product.price * item.quantity })),
     subtotal: totals.subtotal,
     deliveryFee: totals.deliveryFee,
     total: totals.total,
@@ -285,7 +285,7 @@ export function CheckoutPage({ cart, onComplete }: CheckoutPageProps) {
     if (payload.notes) lines.push(`ملاحظات: ${payload.notes}`)
     lines.push('تفاصيل الطلب:')
     payload.items.forEach((item, index) => {
-      lines.push(`${(index + 1).toLocaleString('ar-IQ')}. ${item.productName} - ${item.colorName} - ${formatMeters(item.quantity)} × ${formatPrice(item.unitPrice)} = ${formatPrice(item.totalPrice)}`)
+      lines.push(`${(index + 1).toLocaleString('ar-IQ')}. ${item.productName} - ${item.colorName} - ${formatQuantity(item.quantity, 'قطعة')} × ${formatPrice(item.unitPrice)} = ${formatPrice(item.totalPrice)}`)
     })
     lines.push(`المجموع الفرعي: ${formatPrice(payload.subtotal)}`)
     lines.push(`التوصيل: ${payload.deliveryFee ? formatPrice(payload.deliveryFee) : 'مجاني'}`)
@@ -521,9 +521,9 @@ export function CheckoutPage({ cart, onComplete }: CheckoutPageProps) {
                 <SmartImage src={item.product.image} alt="" sizes="64px" />
                 <div>
                   <strong>{item.product.name}</strong>
-                  <span>{item.color.name} · {formatMeters(item.length)}</span>
+                  <span>{item.color.name} · {formatQuantity(item.quantity, item.product.unit)}</span>
                 </div>
-                <b>{formatPrice(item.product.price * item.length)}</b>
+                <b>{formatPrice(item.product.price * item.quantity)}</b>
               </div>
             ))}
           </div>

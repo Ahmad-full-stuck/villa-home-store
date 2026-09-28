@@ -8,7 +8,7 @@ interface ProductCardProps {
   product: Product
   wished: boolean
   onWish: (slug: string) => void
-  onAdd: (product: Product, color: ProductColor, length: number) => void
+  onAdd: (product: Product, color: ProductColor, quantity: number) => void
 }
 
 const glassStyles = `
@@ -111,11 +111,11 @@ const injectStyles = (id: string, css: string) => {
 injectStyles('eva-glass-styles', glassStyles)
 
 export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps) {
-  const availableColor = product.colors.find((color) => color.available && color.stockMeters > 0)
-  const soldOut = product.stockMeters <= 0 || !availableColor
-  const lowStock = !soldOut && product.stockMeters <= 3
+  const availableColor = product.colors.find((color) => color.available && color.stock > 0)
+  const soldOut = product.stock <= 0 || !availableColor
+  const lowStock = !soldOut && product.stock <= 3
   const wishLabel = wished ? `إزالة ${product.name} من المفضلة` : `إضافة ${product.name} إلى المفضلة`
-  const addLabel = `أضيفي نصف متر من ${product.name} إلى السلة`
+  const addLabel = `أضيفي ${product.name} إلى السلة`
   const detailPath = `/product/${product.slug}`
 
   return (
@@ -159,7 +159,7 @@ export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps
             <p className="product-type">{product.type}</p>
             <Link href={detailPath} className="product-name">{product.name}</Link>
           </div>
-          <span className="product-price">{formatPrice(product.price)}<small>/م</small></span>
+          <span className="product-price">{formatPrice(product.price)}</span>
         </div>
         <div className="product-card-footer">
           <div className="swatch-list" role="list" aria-label="ألوان الخامة">
@@ -178,10 +178,10 @@ export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps
             type="button"
             className="add-button"
             disabled={soldOut}
-            onClick={() => availableColor && onAdd(product, availableColor, 0.5)}
+            onClick={() => availableColor && onAdd(product, availableColor, 1)}
             aria-label={addLabel}
           >
-            {soldOut ? 'نفد المخزون' : <><ShoppingBag size={14} aria-hidden="true" /><span>أضيفي ٠٫٥ م</span></>}
+            {soldOut ? 'نفد المخزون' : <><ShoppingBag size={14} aria-hidden="true" /><span>أضيفي للسلة</span></>}
           </button>
         </div>
       </div>
@@ -199,14 +199,14 @@ export function ProductGridSkeleton() {
   )
 }
 
-export function InlineAddButton({ product, onAdd }: { product: Product; onAdd: (product: Product, color: ProductColor, length: number) => void }) {
-  const color = product.colors.find((item) => item.available && item.stockMeters > 0)
+export function InlineAddButton({ product, onAdd }: { product: Product; onAdd: (product: Product, color: ProductColor, quantity: number) => void }) {
+  const color = product.colors.find((item) => item.available && item.stock > 0)
   return (
     <button
       type="button"
       className="icon-button"
       disabled={!color}
-      onClick={() => color && onAdd(product, color, 0.5)}
+      onClick={() => color && onAdd(product, color, 1)}
       aria-label={`إضافة ${product.name} إلى السلة`}
     >
       <Plus size={18} aria-hidden="true" />

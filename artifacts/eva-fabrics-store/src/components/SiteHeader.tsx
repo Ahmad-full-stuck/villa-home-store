@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { Heart, Home, Instagram, Menu, MessageCircle, Search, ShoppingBag, Shirt, X } from 'lucide-react'
 import { Link, useLocation } from 'wouter'
 import type { Product, SiteRoute } from '@/types'
-import { formatMeters } from '@/lib/catalog'
+import { formatQuantity } from '@/lib/catalog'
 import { siteConfig } from '@/lib/site'
 import { Logo } from './Logo'
 import { Modal } from './Modal'
@@ -11,7 +11,7 @@ import { SearchDialog } from './SearchDialog'
 interface SiteHeaderProps {
   routes: SiteRoute[]
   products: Product[]
-  cartMeters: number
+  cartCount: number
   wishlistCount: number
 }
 
@@ -35,7 +35,7 @@ const drawerNav: NavItem[] = [
   { id: 'policies', label: 'السياسات', path: '/policies' },
 ]
 
-export function SiteHeader({ routes, products, cartMeters, wishlistCount }: SiteHeaderProps) {
+export function SiteHeader({ routes, products, cartCount, wishlistCount }: SiteHeaderProps) {
   const [location] = useLocation()
   const [searchOpen, setSearchOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -67,7 +67,7 @@ export function SiteHeader({ routes, products, cartMeters, wishlistCount }: Site
     { id: 'home', label: 'الرئيسية', path: '/', Icon: Home, badge: '' },
     { id: 'catalog', label: 'الأقمشة', path: '/catalog', Icon: Shirt, badge: '' },
     { id: 'favorites', label: 'المفضلة', path: '/favorites', Icon: Heart, badge: wishlistCount > 0 ? `${wishlistCount}` : '' },
-    { id: 'cart', label: 'السلة', path: '/cart', Icon: ShoppingBag, badge: cartMeters > 0 ? formatMeters(cartMeters) : '' },
+    { id: 'cart', label: 'السلة', path: '/cart', Icon: ShoppingBag, badge: cartCount > 0 ? String(cartCount) : '' },
   ]
 
   const drawerItems = [...navItems, ...drawerNav]
@@ -102,10 +102,10 @@ export function SiteHeader({ routes, products, cartMeters, wishlistCount }: Site
               <Heart size={19} />
               {wishlistCount > 0 && <span>{wishlistCount}</span>}
             </Link>
-            <Link href="/cart" className="cart-button" onClick={navigate} aria-label={`السلة، ${formatMeters(cartMeters)}`}>
+            <Link href="/cart" className="cart-button" onClick={navigate} aria-label={`السلة، ${formatQuantity(cartCount, 'قطعة')}`}>
               <ShoppingBag size={17} />
               <span>السلة</span>
-              {cartMeters > 0 && <b>{formatMeters(cartMeters)}</b>}
+              {cartCount > 0 && <b>{formatQuantity(cartCount, 'قطعة')}</b>}
             </Link>
             <button type="button" className="icon-button menu-toggle" onClick={() => setMenuOpen(true)} aria-label="فتح قائمة التنقل" aria-haspopup="dialog" aria-expanded={menuOpen}>
               <Menu size={20} />

@@ -1,28 +1,71 @@
-import type { CartItem, Product, ProductColor } from '@/types'
-import { availableMeters, normalizeHalfMeters, orderKey } from './catalog'
+﻿import type { CartItem, Product, ProductColor } from '@/types'
+import { availableStock, normalizeQuantity, orderKey } from './catalog'
 
-const CART_KEY = 'eva-fabrics-cart-v1'
-const WISHLIST_KEY = 'eva-fabrics-wishlist-v1'
+const CART_KEY = 'villa-home-cart-v1'
+const WISHLIST_KEY = 'villa-home-wishlist-v1'
 
-const readArray = (key: string): unknown[] => {
-  if (typeof window === 'undefined') return []
+const readArrayOrNull = (key: string): unknown[] | null => {
+  if (typeof window === 'undefined') return null
   try {
-    const parsed: unknown = JSON.parse(window.localStorage.getItem(key) || '[]')
-    if (!Array.isArray(parsed)) return []
-    // A corrupted build once wrote duplicated cart entries back on every load,
-    // so the stored list can be huge. Only the head of it still describes the
-    // real cart; keep that and let the reader de-duplicate the rest.
-    return parsed.length > 500 ? parsed.slice(0, 500) : parsed
+    const raw = window.localStorage.getItem(key)
+    if (raw === null) return null
+    const parsed: unknown = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
   } catch {
     return []
   }
 }
 
+const dropLegacyCart = (): void => {
+  if (typeof window === 'undefined') return
+  try {
+    window.localStorage.removeItem('eva-cart')
+    window.localStorage.removeItem('eva-fabrics-cart-v1')
+  } catch {
+    return
+  }
+}
+
+// An earlier build appended each merged cart line back onto the list it was
+// building, so the stored value could hold thousands of duplicates of the same
+// product and colour. The cart only ever keeps one line per pair anyway, so
+// collapse the duplicates before anything else touches the list.
+const compactStoredCart = (raw: unknown[]): unknown[] => {
+  const seen = new Set<string>()
+  const compact: unknown[] = []
+  for (const entry of raw) {
+    if (!entry || typeof entry !== 'object') continue
+    const record = entry as Record<string, unknown>
+    const slug = typeof record.productSlug === 'string'
+      ? record.productSlug
+      : typeof record.slug === 'string'
+        ? record.slug
+        : ''
+    if (!slug) continue
+    const color = typeof record.colorId === 'string'
+      ? record.colorId
+      : typeof record.color === 'string'
+        ? record.color
+        : ''
+    const signature = `${slug}:${color}`
+    if (seen.has(signature)) continue
+    seen.add(signature)
+    compact.push(entry)
+    if (compact.length >= 200) break
+  }
+  return compact
+}
+
 const readStoredCart = (): unknown[] => {
-  if (typeof window === 'undefined') return []
-  const current = readArray(CART_KEY)
-  if (current.length) return current
-  return readArray('eva-cart')
+  const current = readArrayOrNull(CART_KEY)
+  if (current !== null) {
+    dropLegacyCart()
+    return compactStoredCart(current)
+  }
+  const legacy = readArrayOrNull('eva-fabrics-cart-v1')
+  if (legacy === null) return []
+  dropLegacyCart()
+  return compactStoredCart(legacy)
 }
 
 const findProduct = (products: Product[], slug: string): Product | undefined => products.find((product) => product.slug === slug)
@@ -32,18 +75,18 @@ const findColor = (product: Product, id: string): ProductColor => product.colors
   name: 'اللون المختار',
   hex: '#c8b7aa',
   available: true,
-  stockMeters: product.stockMeters,
+  stock: product.stock,
 }
 
 const merge = (cart: CartItem[], item: CartItem): CartItem[] => {
-  const max = availableMeters(item.product, item.color)
+  const max = availableStock(item.product, item.color)
   const key = orderKey(item)
   const existingIndex = cart.findIndex((entry) => orderKey(entry) === key)
   if (max <= 0) return cart
-  if (existingIndex < 0) return [...cart, { ...item, length: Math.min(item.length, max) }]
+  if (existingIndex < 0) return [...cart, { ...item, quantity: Math.min(item.quantity, max) }]
   const next = [...cart]
   const current = next[existingIndex]
-  next[existingIndex] = { ...current, length: Math.min(max, current.length + item.length) }
+  next[existingIndex] = { ...current, quantity: Math.min(max, current.quantity + item.quantity) }
   return next
 }
 
@@ -71,11 +114,15 @@ export const getStoredCart = (products: Product[]): CartItem[] => {
     const color = findColor(product, colorId)
     const signature = `${slug}:${color.id}`
     if (seen.has(signature)) continue
-    const lengthValue = typeof record.length === 'number' ? record.length : typeof record.quantity === 'number' ? record.quantity : 0
-    const length = normalizeHalfMeters(lengthValue)
-    if (!length) continue
+    const rawQuantity = typeof record.quantity === 'number'
+      ? record.quantity
+      : typeof record.length === 'number'
+        ? record.length
+        : 0
+    const quantity = normalizeQuantity(rawQuantity)
+    if (!quantity) continue
     seen.add(signature)
-    result = merge(result, { product, color, length })
+    result = merge(result, { product, color, quantity })
   }
   return result
 }
@@ -84,24 +131,24 @@ export const addCartItem = (
   cart: CartItem[],
   product: Product,
   color: ProductColor,
-  requestedLength: number,
+  requestedQuantity: number,
 ): { cart: CartItem[]; added: number; capped: boolean; available: boolean } => {
-  const available = availableMeters(product, color)
-  const length = normalizeHalfMeters(requestedLength)
-  if (available <= 0 || length <= 0) return { cart, added: 0, capped: false, available: false }
+  const available = availableStock(product, color)
+  const quantity = normalizeQuantity(requestedQuantity)
+  if (available <= 0 || quantity <= 0) return { cart, added: 0, capped: false, available: false }
   const existing = cart.find((item) => orderKey(item) === orderKey({ product, color }))
-  const current = existing?.length || 0
-  const nextLength = Math.min(available, current + length)
-  return { cart: merge(cart, { product, color, length }), added: nextLength - current, capped: nextLength < current + length, available: true }
+  const current = existing?.quantity || 0
+  const nextQuantity = Math.min(available, current + quantity)
+  return { cart: merge(cart, { product, color, quantity }), added: nextQuantity - current, capped: nextQuantity < current + quantity, available: true }
 }
 
-export const updateCartItem = (cart: CartItem[], key: string, requestedLength: number): CartItem[] => {
+export const updateCartItem = (cart: CartItem[], key: string, requestedQuantity: number): CartItem[] => {
   const item = cart.find((entry) => orderKey(entry) === key)
   if (!item) return cart
-  const max = availableMeters(item.product, item.color)
-  const nextLength = normalizeHalfMeters(requestedLength)
-  if (max <= 0 || nextLength <= max) return nextLength > 0 ? cart.map((entry) => orderKey(entry) === key ? { ...entry, length: nextLength } : entry) : cart.filter((entry) => orderKey(entry) !== key)
-  return cart.map((entry) => orderKey(entry) === key ? { ...entry, length: max } : entry)
+  const max = availableStock(item.product, item.color)
+  const nextQuantity = normalizeQuantity(requestedQuantity)
+  if (max <= 0 || nextQuantity <= max) return nextQuantity > 0 ? cart.map((entry) => orderKey(entry) === key ? { ...entry, quantity: nextQuantity } : entry) : cart.filter((entry) => orderKey(entry) !== key)
+  return cart.map((entry) => orderKey(entry) === key ? { ...entry, quantity: max } : entry)
 }
 
 export const removeCartItem = (cart: CartItem[], key: string): CartItem[] => cart.filter((item) => orderKey(item) !== key)
@@ -115,10 +162,10 @@ export const reconcileCart = (cart: CartItem[], products: Product[]): CartItem[]
     const color = findColor(product, item.color.id)
     const signature = `${product.slug}:${color.id}`
     if (seen.has(signature)) continue
-    const length = Math.min(item.length, availableMeters(product, color))
-    if (length <= 0) continue
+    const quantity = Math.min(item.quantity, availableStock(product, color))
+    if (quantity <= 0) continue
     seen.add(signature)
-    result = merge(result, { product, color, length })
+    result = merge(result, { product, color, quantity })
   }
   return result
 }
@@ -142,7 +189,7 @@ export const setStoredWishlist = (slugs: string[]): void => {
 export const setStoredCart = (cart: CartItem[]): void => {
   if (typeof window === 'undefined') return
   try {
-    window.localStorage.setItem(CART_KEY, JSON.stringify(cart.map((item) => ({ productSlug: item.product.slug, colorId: item.color.id, length: item.length }))))
+    window.localStorage.setItem(CART_KEY, JSON.stringify(cart.map((item) => ({ productSlug: item.product.slug, colorId: item.color.id, quantity: item.quantity }))))
   } catch {
     return
   }

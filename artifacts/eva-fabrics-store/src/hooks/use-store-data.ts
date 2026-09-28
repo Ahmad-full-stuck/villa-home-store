@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import type { Category, DataSource, Product, ProductColor, ProductFaq, ProductSpecs, SiteRoute, StorefrontData } from '@/types'
 import { fallbackCategories, fallbackProducts, fallbackRoutes } from '@/lib/fallback-data'
-import { normalizeArabic } from '@/lib/catalog'
 import { apiUrl } from '@/lib/site'
 
 type ApiStatus = 'loading' | 'ready' | 'fallback'
@@ -46,8 +45,8 @@ const stockFrom = (value: unknown, fallback: number): number => {
   return fallback
 }
 
-const normalizeColor = (value: unknown, index: number, stockMeters: number, primaryColorName: string, productAvailable: boolean): ProductColor => {
-  const available = productAvailable && stockMeters > 0
+const normalizeColor = (value: unknown, index: number, stock: number, primaryColorName: string, productAvailable: boolean): ProductColor => {
+  const available = productAvailable && stock > 0
   if (typeof value === 'string') {
     const isHex = /^#[0-9a-f]{3,8}$/i.test(value)
     return {
@@ -55,35 +54,31 @@ const normalizeColor = (value: unknown, index: number, stockMeters: number, prim
       name: isHex ? (index === 0 && primaryColorName ? primaryColorName : `لون ${index + 1}`) : value,
       hex: isHex ? value : '#8e6e7d',
       available,
-      stockMeters: available ? stockMeters : 0,
+      stock: available ? stock : 0,
     }
   }
-  if (!isRecord(value)) return { id: `color-${index + 1}`, name: `لون ${index + 1}`, hex: '#8e6e7d', available, stockMeters: available ? stockMeters : 0 }
-  const colorStock = stockFrom(value.stockMeters ?? value.inventory ?? value.stock, stockMeters)
+  if (!isRecord(value)) return { id: `color-${index + 1}`, name: `لون ${index + 1}`, hex: '#8e6e7d', available, stock: available ? stock : 0 }
+  const colorStock = stockFrom(value.stockMeters ?? value.stock ?? value.inventory ?? value.stockQuantity, stock)
   return {
     id: textFrom(value.id, `color-${index + 1}`),
     name: textFrom(value.name ?? value.color, index === 0 && primaryColorName ? primaryColorName : `لون ${index + 1}`),
     hex: /^#[0-9a-f]{3,8}$/i.test(String(value.hex)) ? String(value.hex) : '#8e6e7d',
     available: productAvailable && booleanFrom(value.available, colorStock > 0) && colorStock > 0,
-    stockMeters: productAvailable ? colorStock : 0,
+    stock: productAvailable ? colorStock : 0,
   }
 }
 
 const normalizeSpecs = (value: unknown): ProductSpecs => {
   const source = isRecord(value) ? value : {}
-  const stretch = textFrom(source.stretch, 'غير محدد')
-  const hasExplicitStretch = typeof source.isStretch === 'boolean'
-  const isStretch = hasExplicitStretch ? source.isStretch as boolean : !normalizeArabic(stretch).includes('غير مطاطي')
   return {
-    composition: textFrom(source.composition, 'خامة غير محددة'),
-    width: textFrom(source.width, 'غير محددة'),
-    weight: textFrom(source.weight, 'غير محددة'),
-    stretch,
-    isStretch,
-    opacity: textFrom(source.opacity, 'غير محددة'),
+    brand: textFrom(source.brand ?? source.composition, 'ماركة غير محددة'),
+    power: textFrom(source.power, 'غير محدد'),
+    capacity: textFrom(source.capacity ?? source.width, 'غير محدد'),
+    size: textFrom(source.size ?? source.opacity, 'غير محدد'),
+    weight: textFrom(source.weight, 'غير محدد'),
+    warranty: textFrom(source.warranty, 'سنة واحدة'),
     finish: textFrom(source.finish, 'غير محدد'),
-    care: textFrom(source.care, 'اتباع تعليمات العناية على البطاقة'),
-    use: textFrom(source.use, 'حسب تصميم القطعة'),
+    use: textFrom(source.use, 'للاستخدام المنزلي'),
   }
 }
 
@@ -101,12 +96,12 @@ const normalizeProduct = (value: unknown, index: number): Product | null => {
   if (!name || !slug) return null
   const image = textFrom(value.image, 'fabrics/hero.jpg')
   const imageList = Array.isArray(value.images) ? value.images.filter((item): item is string => typeof item === 'string' && item.length > 0) : []
-  const stockMeters = stockFrom(value.stockMeters ?? value.stockQuantity ?? value.inventory ?? value.stock, 10)
-  const productAvailable = booleanFrom(value.inStock, stockMeters > 0)
+  const stock = stockFrom(value.stockMeters ?? value.stockQuantity ?? value.inventory ?? value.stock, 10)
+  const productAvailable = booleanFrom(value.inStock, stock > 0)
   const primaryColorName = textFrom(value.color, '')
   const colors = Array.isArray(value.colors) && value.colors.length > 0
-    ? value.colors.map((item, colorIndex) => normalizeColor(item, colorIndex, stockMeters, primaryColorName, productAvailable))
-    : [normalizeColor({}, 0, stockMeters, primaryColorName, productAvailable)]
+    ? value.colors.map((item, colorIndex) => normalizeColor(item, colorIndex, stock, primaryColorName, productAvailable))
+    : [normalizeColor({}, 0, stock, primaryColorName, productAvailable)]
   return {
     id: textFrom(value.id, slug),
     slug,
@@ -123,7 +118,8 @@ const normalizeProduct = (value: unknown, index: number): Product | null => {
     faqs: Array.isArray(value.faqs) ? value.faqs.map(normalizeFaq).filter((item): item is ProductFaq => item !== null) : [],
     isNew: booleanFrom(value.isNew, false),
     isFeatured: booleanFrom(value.isFeatured, true),
-    stockMeters,
+    unit: textFrom(value.unit, 'قطعة'),
+    stock,
     createdAt: textFrom(value.createdAt, new Date().toISOString().slice(0, 10)),
   }
 }

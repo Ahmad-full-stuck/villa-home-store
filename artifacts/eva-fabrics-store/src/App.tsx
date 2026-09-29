@@ -17,17 +17,17 @@ import { AboutPage, ContactPage, FabricGuidePage, OrderConfirmationPage, OrderTr
 import NotFound from '@/pages/not-found'
 
 const shellStyles = `
-.skip-link { position: fixed; top: 14px; right: 14px; z-index: 140; display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; color: #fff6f8; background: var(--eva-rose); border: 1px solid rgba(255, 255, 255, .4); border-radius: 999px; box-shadow: var(--eva-shadow-small); backdrop-filter: blur(10px); font-size: 12px; font-weight: 600; transform: translateY(-190%); transition: transform .2s ease; }
+.skip-link { position: fixed; top: 14px; right: 14px; z-index: 140; display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; color: #fff; background: var(--vh-brand); border: 1px solid rgba(255, 255, 255, .4); border-radius: 999px; box-shadow: var(--vh-shadow-small); font-size: 12px; font-weight: 600; transform: translateY(-190%); transition: transform .2s ease; }
 .skip-link:focus { transform: translateY(0); }
 .app-shell { overflow: clip; }
-.app-main { scroll-margin-top: 116px; }
+.app-main { scroll-margin-top: calc(var(--vh-header-h) + 12px); }
 .footer-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 34px; padding-top: 46px; }
 .footer-top p { margin-top: 0; }
 .footer-top .social-links { margin-top: 0; }
 .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
-.mobile-nav a.is-active { color: var(--eva-rose); font-weight: 600; }
+.mobile-nav a.is-active { color: var(--vh-brand); font-weight: 600; }
 .bottom-nav .bottom-nav-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; }
-.bottom-nav .bottom-nav-badge { position: absolute; top: -7px; left: -10px; min-width: 15px; height: 15px; display: inline-grid; place-items: center; padding-inline: 3px; color: #fff; background: var(--eva-rose); border: 1.5px solid var(--eva-bg); border-radius: 999px; font-size: 8px; line-height: 1; font-weight: 600; }
+.bottom-nav .bottom-nav-badge { position: absolute; top: -7px; left: -10px; min-width: 15px; height: 15px; display: inline-grid; place-items: center; padding-inline: 3px; color: #fff; background: var(--vh-brand); border: 1.5px solid var(--vh-bg); border-radius: 999px; font-size: 8px; line-height: 1; font-weight: 600; }
 .bottom-nav .bottom-nav-label { white-space: nowrap; }
 @media (max-width: 1100px) {
   .desktop-nav { gap: 14px; }
@@ -40,8 +40,8 @@ const shellStyles = `
 }
 @media (max-width: 820px) {
   .announcement-bar span:nth-of-type(2) { display: none; }
-  .site-footer { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
-  .toast { bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .site-footer { padding-bottom: calc(60px + var(--vh-stack)); }
+  .toast { bottom: calc(var(--vh-stack) + 142px); }
 }
 @media (max-width: 560px) {
   .header-inner { gap: 12px; }

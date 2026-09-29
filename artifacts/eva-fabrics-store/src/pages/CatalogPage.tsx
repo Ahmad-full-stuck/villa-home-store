@@ -46,25 +46,25 @@ const catalogStyles = `
   display: inline-grid;
   place-items: center;
   padding-inline: 7px;
-  color: var(--eva-rose);
-  background: rgba(122, 30, 60, .12);
+  color: var(--vh-brand);
+  background: rgba(224, 53, 127, .12);
   border-radius: 999px;
   font-size: 11.5px;
   font-weight: 600;
   line-height: 1;
 }
 .chip.chip-active .chip-count, .chip[aria-pressed="true"] .chip-count { color: #fff; background: rgba(255, 255, 255, .24); }
-.stats-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 18px; margin-top: 18px; color: var(--eva-muted); font-size: 11.5px; }
+.stats-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 18px; margin-top: 18px; color: var(--vh-muted); font-size: 11.5px; }
 .stats-bar.glass-card { padding: 14px 20px; }
 .stats-bar.glass-card:hover { transform: none; box-shadow: var(--glass-shadow); }
 .stat-item { display: inline-flex; align-items: center; gap: 7px; }
-.stat-item svg { flex: 0 0 auto; color: var(--eva-rose); }
-.stat-item strong { color: var(--eva-rose); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.stat-divider { width: 1px; height: 16px; background: rgba(48, 38, 42, .14); }
+.stat-item svg { flex: 0 0 auto; color: var(--vh-brand); }
+.stat-item strong { color: var(--vh-brand); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat-divider { width: 1px; height: 16px; background: rgba(16, 26, 48, .14); }
 .empty-state.glass-card { padding: 62px 24px; margin-top: 4px; }
 .empty-state.glass-card:hover { transform: none; box-shadow: var(--glass-shadow); }
 .filter-panel-title strong { display: inline-flex; align-items: center; gap: 7px; }
-.filter-panel .filter-browse { width: 100%; min-height: 44px; justify-content: space-between; padding: 10px 0; border-top: 1px solid rgba(48, 38, 42, .1); }
+.filter-panel .filter-browse { width: 100%; min-height: 44px; justify-content: space-between; padding: 10px 0; border-top: 1px solid rgba(16, 26, 48, .1); }
 .filter-drawer .filter-panel { padding: 4px 24px 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
 .catalog-search input[type="search"] { -webkit-appearance: none; appearance: none; }
 .catalog-search input[type="search"]::-webkit-search-cancel-button { display: none; }

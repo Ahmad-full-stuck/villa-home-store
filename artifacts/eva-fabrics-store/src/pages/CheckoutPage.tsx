@@ -57,40 +57,34 @@ const createLocalOrderNumber = (): string => {
 }
 
 const glassStyles = `
-.glass-scope { --glass-fill: rgba(255, 252, 250, .6); --glass-strong: rgba(255, 251, 250, .9); --glass-line: rgba(255, 255, 255, .74); --glass-shadow: 0 22px 48px rgba(74, 24, 43, .1); }
-.glass-scope .glass { position: relative; background: var(--glass-fill); border: 1px solid var(--glass-line); box-shadow: var(--glass-shadow); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); }
-.glass-scope .glass-card { border-radius: 16px; }
-.glass-scope .glass-strong { background: var(--glass-strong); border-color: rgba(255, 255, 255, .92); }
-.glass-scope .glass-dark { color: #fff6f8; background: rgba(46, 24, 33, .92); border: 1px solid rgba(255, 246, 248, .18); box-shadow: 0 16px 34px rgba(46, 24, 33, .24); }
-.glass-scope .glass-pill { border-radius: 999px; }
-.glass-scope .glass-input, .glass-scope .field-input, .glass-scope .field textarea { background: rgba(255, 255, 255, .74); border-color: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-.glass-scope .glass-divider { height: 1px; margin: 16px 0; background: linear-gradient(90deg, rgba(122, 30, 60, 0), rgba(122, 30, 60, .32), rgba(122, 30, 60, 0)); border: 0; }
-.glass-scope .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; color: var(--eva-muted); background: rgba(255, 255, 255, .78); border: 1px solid rgba(255, 255, 255, .92); border-radius: 999px; font-size: 11.5px; line-height: 1.7; }
-.glass-scope .chip i { width: 11px; height: 11px; border: 1px solid rgba(43, 33, 36, .2); border-radius: 50%; }
+.glass-scope .glass-input, .glass-scope .field-input, .glass-scope .field textarea { background: rgba(255, 255, 255, .74); border-color: rgba(255, 255, 255, .92); backdrop-filter: blur(12px) saturate(150%); -webkit-backdrop-filter: blur(12px) saturate(150%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95); }
+.glass-scope .glass-divider { height: 1px; margin: 16px 0; background: linear-gradient(90deg, rgba(224, 53, 127, 0), rgba(224, 53, 127, .32), rgba(224, 53, 127, 0)); border: 0; }
+.glass-scope .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; color: var(--vh-muted); background: rgba(255, 255, 255, .78); border: 1px solid rgba(255, 255, 255, .92); border-radius: 999px; font-size: 11.5px; line-height: 1.7; }
+.glass-scope .chip i { width: 11px; height: 11px; border: 1px solid rgba(20, 29, 51, .2); border-radius: 50%; }
 .glass-scope .review-block { background: rgba(255, 255, 255, .62); border-color: rgba(255, 255, 255, .88); }
 .glass-scope .whatsapp-panel { display: grid; gap: 13px; margin-top: 20px; padding: 18px; border-radius: 16px; }
 .glass-scope .whatsapp-panel h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; }
-.glass-scope .whatsapp-panel p { color: var(--eva-muted); font-size: 12.5px; line-height: 1.9; }
-.glass-scope .whatsapp-panel p strong { color: var(--eva-rose); }
+.glass-scope .whatsapp-panel p { color: var(--vh-muted); font-size: 12.5px; line-height: 1.9; }
+.glass-scope .whatsapp-panel p strong { color: var(--vh-brand); }
 .glass-scope .whatsapp-actions { display: grid; gap: 10px; }
-.glass-scope .button-whatsapp { color: #fff; background: var(--eva-green); box-shadow: 0 8px 18px rgba(73, 118, 91, .25); }
+.glass-scope .button-whatsapp { color: #fff; background: var(--vh-green); box-shadow: 0 8px 18px rgba(73, 118, 91, .25); }
 .glass-scope .button-whatsapp:hover { background: #3c6350; box-shadow: 0 11px 24px rgba(73, 118, 91, .32); }
-.glass-scope .server-error { background: rgba(249, 236, 231, .88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.glass-scope .checkout-secure.glass-dark { margin-top: 18px; padding: 12px 14px; color: #c9ecda; background: rgba(46, 24, 33, .9); border: 1px solid rgba(255, 246, 248, .18); border-radius: 12px; }
+.glass-scope .server-error { background: rgba(253, 236, 243, .88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.glass-scope .checkout-secure.glass-dark { margin-top: 18px; padding: 12px 14px; color: #c9ecda; background: rgba(16, 26, 48, .9); border: 1px solid rgba(255, 246, 248, .18); border-radius: 12px; }
 .glass-scope .empty-card { display: grid; justify-items: center; max-width: 470px; padding: 44px 32px; border-radius: 20px; text-align: center; }
-.glass-scope .empty-card p { max-width: 330px; margin-top: 7px; color: var(--eva-muted); font-size: 13.5px; line-height: 1.9; }
+.glass-scope .empty-card p { max-width: 330px; margin-top: 7px; color: var(--vh-muted); font-size: 13.5px; line-height: 1.9; }
 .glass-scope .empty-card .button { margin-top: 24px; }
-.glass-scope a:focus-visible, .glass-scope button:focus-visible, .glass-scope input:focus-visible, .glass-scope select:focus-visible, .glass-scope textarea:focus-visible, .glass-scope [tabindex]:focus-visible { outline: 2px solid var(--eva-rose); outline-offset: 3px; }
+.glass-scope a:focus-visible, .glass-scope button:focus-visible, .glass-scope input:focus-visible, .glass-scope select:focus-visible, .glass-scope textarea:focus-visible, .glass-scope [tabindex]:focus-visible { outline: 2px solid var(--vh-brand); outline-offset: 3px; }
 
 .glass-scope .order-trust { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 22px; padding: 0; list-style: none; }
-.glass-scope .order-trust li { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; color: var(--eva-ink); background: rgba(255, 255, 255, .72); border: 1px solid rgba(255, 255, 255, .9); border-radius: 999px; font-size: 12.5px; }
-.glass-scope .order-trust svg { color: var(--eva-rose); }
+.glass-scope .order-trust li { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; color: var(--vh-ink); background: rgba(255, 255, 255, .72); border: 1px solid rgba(255, 255, 255, .9); border-radius: 999px; font-size: 12.5px; }
+.glass-scope .order-trust svg { color: var(--vh-brand); }
 
 .glass-scope .order-box { padding: 30px; }
 .glass-scope .order-box-head { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 24px; }
-.glass-scope .order-box-icon { display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 46px; color: #fff; background: linear-gradient(140deg, var(--eva-rose), var(--eva-rose-dark)); border-radius: 14px; box-shadow: 0 10px 22px rgba(122, 30, 60, .28); }
+.glass-scope .order-box-icon { display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 46px; color: #fff; background: linear-gradient(140deg, var(--vh-brand), var(--vh-brand-dark)); border-radius: 14px; box-shadow: 0 10px 22px rgba(224, 53, 127, .28); }
 .glass-scope .order-box-head h2 { margin: 0 0 4px; font-size: 21px; }
-.glass-scope .order-box-head p { margin: 0; color: var(--eva-muted); font-size: 13.5px; line-height: 1.8; }
+.glass-scope .order-box-head p { margin: 0; color: var(--vh-muted); font-size: 13.5px; line-height: 1.8; }
 
 .glass-scope .order-box .form-fields { grid-template-columns: 1fr 1fr; gap: 17px 16px; }
 .glass-scope .order-box .field-full { grid-column: 1 / -1; }
@@ -99,39 +93,39 @@ const glassStyles = `
 .glass-scope .order-box .field-input input, .glass-scope .order-box .field-input select { font-size: 15px; }
 .glass-scope .order-box .field textarea { font-size: 15px; line-height: 1.9; }
 .glass-scope .order-box .field-error { font-size: 12px; }
-.glass-scope .order-box .field-hint { color: var(--eva-muted); font-size: 11.5px; line-height: 1.7; }
+.glass-scope .order-box .field-hint { color: var(--vh-muted); font-size: 11.5px; line-height: 1.7; }
 
-.glass-scope .order-total-strip { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 26px; padding: 16px 18px; background: linear-gradient(120deg, rgba(122, 30, 60, .07), rgba(122, 30, 60, .02)); border: 1px solid rgba(122, 30, 60, .14); border-radius: 18px; }
-.glass-scope .order-total-strip > span { display: grid; gap: 2px; color: var(--eva-muted); font-size: 12.5px; }
-.glass-scope .order-total-strip strong { color: var(--eva-rose); font-size: 24px; line-height: 1.3; }
-.glass-scope .order-submit { width: 100%; min-height: 56px; margin-top: 14px; font-size: 16px; border-radius: 16px; box-shadow: 0 14px 30px rgba(122, 30, 60, .3); }
+.glass-scope .order-total-strip { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 26px; padding: 16px 18px; background: linear-gradient(120deg, rgba(224, 53, 127, .07), rgba(224, 53, 127, .02)); border: 1px solid rgba(224, 53, 127, .14); border-radius: 18px; }
+.glass-scope .order-total-strip > span { display: grid; gap: 2px; color: var(--vh-muted); font-size: 12.5px; }
+.glass-scope .order-total-strip strong { color: var(--vh-brand); font-size: 24px; line-height: 1.3; }
+.glass-scope .order-submit { width: 100%; min-height: 56px; margin-top: 14px; font-size: 16px; border-radius: 16px; box-shadow: 0 14px 30px rgba(224, 53, 127, .3); }
 .glass-scope .order-submit:disabled { box-shadow: none; }
 .glass-scope .consent-row {
   display: grid; grid-template-columns: 22px 1fr auto; align-items: start; gap: 9px;
   margin-top: 12px; padding: 11px 12px; background: rgba(255, 255, 255, .5);
   border: 1px solid rgba(255, 255, 255, .78); border-radius: 14px; cursor: pointer;
 }
-.glass-scope .consent-row:has(.consent-box:checked) { background: rgba(122, 30, 60, .06); border-color: rgba(122, 30, 60, .28); }
+.glass-scope .consent-row:has(.consent-box:checked) { background: rgba(224, 53, 127, .06); border-color: rgba(224, 53, 127, .28); }
 .glass-scope .consent-box {
-  width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--eva-rose); cursor: pointer;
+  width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--vh-brand); cursor: pointer;
 }
-.glass-scope .consent-box:focus-visible { outline: 2px solid var(--eva-rose); outline-offset: 2px; }
-.glass-scope .consent-title { display: block; color: var(--eva-ink); font-size: 12.5px; font-weight: 600; line-height: 1.6; }
-.glass-scope .consent-row small { display: block; margin-top: 2px; color: var(--eva-muted); font-size: 11.5px; line-height: 1.65; }
+.glass-scope .consent-box:focus-visible { outline: 2px solid var(--vh-brand); outline-offset: 2px; }
+.glass-scope .consent-title { display: block; color: var(--vh-ink); font-size: 12.5px; font-weight: 600; line-height: 1.6; }
+.glass-scope .consent-row small { display: block; margin-top: 2px; color: var(--vh-muted); font-size: 11.5px; line-height: 1.65; }
 .glass-scope .consent-links { display: flex; flex-direction: column; gap: 2px; }
-.glass-scope .consent-links a { color: var(--eva-rose); font-size: 11.5px; font-weight: 600; text-decoration: underline; }
+.glass-scope .consent-links a { color: var(--vh-brand); font-size: 11.5px; font-weight: 600; text-decoration: underline; }
 .glass-scope .consent-row .field-error { grid-column: 1 / -1; }
-.glass-scope .order-terms a { color: var(--eva-rose); font-weight: 600; }
+.glass-scope .order-terms a { color: var(--vh-brand); font-weight: 600; }
 .glass-scope .checkout-item, .glass-scope .checkout-item div { min-width: 0; }
 .glass-scope .checkout-item strong, .glass-scope .checkout-item b { overflow-wrap: anywhere; }
 .glass-scope .checkout-items { display: grid; gap: 14px; max-height: 320px; overflow-y: auto; }
 .glass-scope .checkout-item { display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: 12px; }
 .glass-scope .checkout-item img { width: 58px; height: 58px; object-fit: cover; border-radius: 12px; }
 .glass-scope .checkout-item div { display: grid; gap: 3px; }
-.glass-scope .checkout-item span { color: var(--eva-muted); font-size: 12px; }
+.glass-scope .checkout-item span { color: var(--vh-muted); font-size: 12px; }
 .glass-scope .summary-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 11px; font-size: 13.5px; }
-.glass-scope .summary-total { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 15px; border-top: 1px solid rgba(122, 30, 60, .16); font-size: 15px; }
-.glass-scope .summary-total strong { color: var(--eva-rose); font-size: 22px; }
+.glass-scope .summary-total { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 15px; border-top: 1px solid rgba(224, 53, 127, .16); font-size: 15px; }
+.glass-scope .summary-total strong { color: var(--vh-brand); font-size: 22px; }
 
 @media (max-width: 820px) {
   .glass-scope .order-box { padding: 22px 18px; }

@@ -125,19 +125,19 @@ function App() {
       <SiteHeader routes={routes} products={products} cartCount={cartCount} wishlistCount={wishlist.length} />
       <div id="main-content" className="app-main" tabIndex={-1}>
         <Switch>
-          <Route path="/" component={() => <HomePage {...pageProps} />} />
-          <Route path="/catalog" component={() => <CatalogPage {...pageProps} status={status} />} />
+          <Route path="/">{() => <HomePage {...pageProps} />}</Route>
+          <Route path="/catalog">{() => <CatalogPage {...pageProps} status={status} />}</Route>
           <Route path="/product/:slug">{(params) => <ProductPage {...pageProps} slug={params.slug} />}</Route>
-          <Route path="/cart" component={() => <CartPage cart={cart} onUpdate={updateCart} onRemove={deleteCart} />} />
-          <Route path="/checkout" component={() => <CheckoutPage cart={cart} onComplete={completeOrder} />} />
-          <Route path="/favorites" component={() => <FavoritesPage {...pageProps} />} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/fabric-guide" component={FabricGuidePage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/policies" component={PoliciesPage} />
-          <Route path="/order-tracking" component={OrderTrackingPage} />
+          <Route path="/cart">{() => <CartPage cart={cart} onUpdate={updateCart} onRemove={deleteCart} />}</Route>
+          <Route path="/checkout">{() => <CheckoutPage cart={cart} onComplete={completeOrder} />}</Route>
+          <Route path="/favorites">{() => <FavoritesPage {...pageProps} />}</Route>
+          <Route path="/about">{() => <AboutPage />}</Route>
+          <Route path="/fabric-guide">{() => <FabricGuidePage />}</Route>
+          <Route path="/contact">{() => <ContactPage />}</Route>
+          <Route path="/policies">{() => <PoliciesPage />}</Route>
+          <Route path="/order-tracking">{() => <OrderTrackingPage />}</Route>
           <Route path="/order-confirmation/:orderNumber">{(params) => <OrderConfirmationPage orderNumber={decodeURIComponent(params.orderNumber)} />}</Route>
-          <Route component={NotFound} />
+          <Route>{() => <NotFound />}</Route>
         </Switch>
       </div>
       <SiteFooter routes={routes} categories={categories} />
